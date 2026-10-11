@@ -6,7 +6,11 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    optimizePackageImports: ["lucide-react", "@fortawesome/free-solid-svg-icons", "@fortawesome/free-brands-svg-icons"],
+    optimizePackageImports: [
+      "lucide-react",
+      "@fortawesome/free-solid-svg-icons",
+      "@fortawesome/free-brands-svg-icons",
+    ],
   },
 };
 
