@@ -4,6 +4,21 @@
 
 This guide will help you deploy the Top Rise Fusion restaurant website to production.
 
+## 🗄️ Menu admin and database (read first)
+
+The menu is editable at `/admin` and stored in PostgreSQL, so the site must run
+as a Node server. It can no longer be hosted as static files.
+
+1. Create a PostgreSQL database and a user that owns it.
+2. Copy `.env.example` to `.env.local` (or set the same variables on the host):
+   `NEXT_PUBLIC_BASE_URL`, `DATABASE_URL`, `DATABASE_SSL`, `ADMIN_PASSWORD`, `SESSION_SECRET`.
+3. `npm install`, then `npm run build`, then `npm start` (runs `server.js`).
+4. The first request creates the `menu_items` table and fills it from `lib/data.ts`.
+   After that, every change is made at `/admin` and shows on the site immediately.
+
+Serve the site over HTTPS so the admin sign-in cookie is sent securely.
+If the database is unreachable, the menu falls back to the built-in list in `lib/data.ts`.
+
 ## 📋 Pre-Deployment Checklist
 
 - [ ] Update phone numbers in `lib/data.ts`
