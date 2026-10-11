@@ -1,17 +1,71 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { OptimizedImage } from "@/components/optimized-image";
 import { SectionHeading } from "@/components/section-heading";
-import { featuredDelicacies } from "@/lib/home-data";
+import { featuredDelicacies as fallbackDelicacies } from "@/lib/home-data";
+import { formatMenuPrice } from "@/lib/order-links";
+import type { MenuItem } from "@/lib/types";
+
+type FeaturedDish = {
+  id: string;
+  menuId: string;
+  name: string;
+  tagline: string;
+  description: string;
+  price: string;
+  image: string;
+  note: string;
+};
 
 export function SignatureDelicacies() {
+  // Starts with the built-in cards so the section is never empty, then takes
+  // name, description, price and picture from the live menu (edited at /admin).
+  const [featuredDelicacies, setFeaturedDelicacies] = useState<FeaturedDish[]>(fallbackDelicacies);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/menu/", { cache: "no-store" })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (cancelled || !data || !Array.isArray(data.items)) return;
+        const live = new Map<string, MenuItem>(data.items.map((item: MenuItem) => [item.id, item]));
+        setFeaturedDelicacies(
+          fallbackDelicacies.flatMap((dish) => {
+            const item = live.get(dish.menuId);
+            // Hidden or deleted in the admin: leave it off the home page.
+            if (!item) return [];
+            return [
+              {
+                ...dish,
+                name: item.name,
+                description: item.description || dish.description,
+                price: formatMenuPrice(item.price),
+                image: item.image || dish.image,
+              },
+            ];
+          })
+        );
+      })
+      .catch(() => {
+        // Database unreachable: keep showing the built-in cards.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (featuredDelicacies.length === 0) return null;
+
   return (
     <section className="py-24 md:py-32 bg-charcoal-900">
       <div className="container mx-auto px-4 max-w-7xl">
         <SectionHeading
-          eyebrow="Signature Delicacies"
-          title="Plates That Speak for Themselves"
-          subtitle="A curated selection from our kitchen — each dish crafted to the standards Nairobi's finest expect."
+          eyebrow="Guest Favourites"
+          title="The Plates Town Comes Back For"
+          subtitle="Four of our most ordered meals. The full menu has breakfast, mains, grill and drinks."
         />
 
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mt-16">
@@ -48,7 +102,7 @@ export function SignatureDelicacies() {
                     href="/menu"
                     className="text-gold-400 hover:text-gold-300 text-sm tracking-wide flex items-center gap-2 transition-colors"
                   >
-                    View Menu <ArrowRight className="w-4 h-4" />
+                    Order Now <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>

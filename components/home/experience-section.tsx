@@ -1,12 +1,12 @@
-import { Crown, Wine, ChefHat } from "lucide-react";
+import { Timer, Handshake, Users } from "lucide-react";
 import { AppButton } from "@/components/ui/app-button";
 import { SectionHeading } from "@/components/section-heading";
 import { experiences } from "@/lib/home-data";
 
 const icons = {
-  crown: Crown,
-  wine: Wine,
-  chef: ChefHat,
+  crown: Timer,
+  wine: Handshake,
+  chef: Users,
 };
 
 export function ExperienceSection() {
@@ -14,9 +14,9 @@ export function ExperienceSection() {
     <section className="py-24 md:py-32 bg-charcoal-950 border-y border-gold-500/10">
       <div className="container mx-auto px-4 max-w-7xl">
         <SectionHeading
-          eyebrow="The TAVO Experience"
-          title="Beyond the Plate"
-          subtitle="The hallmarks of Nairobi's luxury hospitality — private suites, curated wines, and evenings designed around you."
+          eyebrow="How We Serve You"
+          title="Made for Life in Town"
+          subtitle="Three ways Top Rise fits into a working day in the CBD."
         />
 
         <div className="grid md:grid-cols-3 gap-8 mt-16">
@@ -40,7 +40,7 @@ export function ExperienceSection() {
 
         <div className="text-center mt-14">
           <AppButton href="/events" variant="outline">
-            Private Events & Catering
+            Meetings &amp; Group Bookings
           </AppButton>
         </div>
       </div>

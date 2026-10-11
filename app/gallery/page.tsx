@@ -69,10 +69,10 @@ export default function GalleryPage() {
     <div className="min-h-screen bg-charcoal-950">
       <PageHero
         image={interiorImages.ambiance2}
-        imageAlt="TAVO gallery — cuisine and ambiance"
-        eyebrow="Visual Journey"
-        title="Curated Gallery"
-        subtitle="A collection of moments — plated delicacies, refined interiors, and the evenings that define TAVO at Rosslyn Square."
+        imageAlt="Top Rise Restaurant gallery — food and dining room"
+        eyebrow="Take a Look"
+        title="Gallery"
+        subtitle="Our plates, our drinks and our dining room at Lyric House in the Nairobi CBD."
       />
 
       <section className="sticky top-20 z-40 bg-charcoal-950/95 backdrop-blur-xl border-b border-accent-500/15">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { restaurantInfo } from "@/lib/data";
 import { Mail, Phone, User, Calendar, Clock, Users } from "lucide-react";
 import {
   formShellClass,
@@ -44,27 +45,26 @@ export function ReservationFormSimple() {
     setSubmitStatus("idle");
 
     try {
-      const subject = encodeURIComponent(`Reservation Request - ${formData.date} at ${formData.time}`);
-      const body = encodeURIComponent(`
-RESERVATION REQUEST
+      // Bookings go to the restaurant's WhatsApp: it works on every phone,
+      // unlike mailto links, and the team confirms in the same chat.
+      const lines = [
+        `*TABLE BOOKING — Top Rise*`,
+        ``,
+        `Name: ${formData.name}`,
+        `Phone: ${formData.phone}`,
+        formData.email ? `Email: ${formData.email}` : "",
+        ``,
+        `Date: ${formData.date}`,
+        `Time: ${formData.time}`,
+        `Guests: ${formData.guests}`,
+        formData.message ? `` : "",
+        formData.message ? `Requests: ${formData.message}` : "",
+        ``,
+        `Sent from the Top Rise website`,
+      ].filter((line, i, all) => line !== "" || all[i - 1] !== "");
 
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-
-Reservation Details:
-Date: ${formData.date}
-Time: ${formData.time}
-Number of Guests: ${formData.guests}
-
-Special Requests:
-${formData.message}
-
----
-Sent from TAVO Restaurant Reservation Form
-      `);
-
-      window.location.href = `mailto:strivego4@gmail.com?subject=${subject}&body=${body}`;
+      const phone = restaurantInfo.whatsapp.replace(/[^0-9]/g, "");
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank");
 
       setSubmitStatus("success");
       setFormData({ name: "", email: "", phone: "", date: "", time: "", guests: "", message: "" });
@@ -76,9 +76,16 @@ Sent from TAVO Restaurant Reservation Form
     }
   };
 
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  const minDate = tomorrow.toISOString().split("T")[0];
+  // Same-day bookings are welcome: most guests book a lunch table that morning.
+  const minDate = new Date().toISOString().split("T")[0];
+
+  // Half-hour slots across opening hours, 8:00 AM to 9:00 PM.
+  const timeSlots = Array.from({ length: 27 }, (_, i) => {
+    const mins = 8 * 60 + i * 30;
+    const h = Math.floor(mins / 60);
+    const m = mins % 60;
+    return `${((h + 11) % 12) + 1}:${m === 0 ? "00" : "30"} ${h < 12 ? "AM" : "PM"}`;
+  });
 
   const iconClass = "absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-accent-400";
 
@@ -93,10 +100,10 @@ Sent from TAVO Restaurant Reservation Form
           </div>
         </div>
         <div>
-          <label htmlFor="email" className={formLabelClass}>Email Address *</label>
+          <label htmlFor="email" className={formLabelClass}>Email Address (optional)</label>
           <div className="relative">
             <Mail className={iconClass} />
-            <input id="email" name="email" type="email" required value={formData.email} onChange={handleChange} className={formInputWithIconClass} placeholder="youremail@gmail.com" />
+            <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} className={formInputWithIconClass} placeholder="youremail@gmail.com" />
           </div>
         </div>
       </div>
@@ -138,7 +145,7 @@ Sent from TAVO Restaurant Reservation Form
             <Clock className={iconClass} />
             <select id="time" name="time" required value={formData.time} onChange={handleChange} className={`${formInputWithIconClass} appearance-none`}>
               <option value="">Select time</option>
-              {["12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM", "9:30 PM", "10:00 PM"].map((t) => (
+              {timeSlots.map((t) => (
                 <option key={t} value={t}>{t}</option>
               ))}
             </select>
@@ -148,7 +155,7 @@ Sent from TAVO Restaurant Reservation Form
 
       <div className="mb-6">
         <label htmlFor="message" className={formLabelClass}>Special Requests or Notes</label>
-        <textarea id="message" name="message" rows={4} value={formData.message} onChange={handleChange} className={`${formInputClass} px-4 resize-none`} placeholder="Dietary requirements, occasion details, preferences..." />
+        <textarea id="message" name="message" rows={4} value={formData.message} onChange={handleChange} className={`${formInputClass} px-4 resize-none`} placeholder="Business meeting, quiet corner, food ready on arrival..." />
       </div>
 
       <div className="text-center">
@@ -161,7 +168,7 @@ Sent from TAVO Restaurant Reservation Form
           ) : (
             <>
               <Calendar className="w-5 h-5" />
-              Send Reservation Request
+              Send Booking on WhatsApp
             </>
           )}
         </button>
@@ -169,7 +176,7 @@ Sent from TAVO Restaurant Reservation Form
 
       {submitStatus === "success" && (
         <div className="mt-6 p-4 bg-green-500/15 border border-green-500/40 rounded-xl text-center">
-          <p className="text-green-400 text-sm">Your email client should open with your reservation request.</p>
+          <p className="text-green-400 text-sm">WhatsApp has opened with your booking ready. Press send and we will confirm your table.</p>
         </div>
       )}
 

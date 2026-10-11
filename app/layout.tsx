@@ -5,6 +5,7 @@ import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { ImagePreloader } from "@/components/image-preloader";
+import { menuItems, restaurantInfo } from "@/lib/data";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
@@ -25,23 +26,48 @@ const inter = Inter({
   display: "swap",
 });
 
+// Set NEXT_PUBLIC_BASE_URL to the live domain at deploy time.
+const siteUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
+const siteTitle = "Top Rise Restaurant | Kenyan Food in Nairobi CBD, Lyric House";
+const siteDescription =
+  "Top Rise Restaurant at Lyric House, Nairobi CBD. Generous Kenyan meals from KES 300: pilau, ugali and beef fry, tilapia, nyama choma. Open daily 8 AM to 10 PM. Order ahead on WhatsApp, pay by M-Pesa, or book a table for your meeting.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
-  title: "TAVO — Nairobi's Finest Fine Dining | Rosslyn Square",
-  description: "Nairobi's address for delicacies. TAVO at Rosslyn Square — world-class cuisine, refined ambience, and white-glove service worthy of the city's finest hotels.",
-  keywords: ["Tavo Nairobi", "Rosslyn restaurants", "luxury dining in Nairobi", "fine dining Redhill Road", "Tavo Rosslyn Square", "premium restaurant Nairobi", "elegant dining Kenya", "fine dining Rosslyn Square"],
-  authors: [{ name: "TAVO Restaurant" }],
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteTitle,
+    template: "%s | Top Rise Restaurant, Nairobi CBD",
+  },
+  description: siteDescription,
+  keywords: [
+    "Top Rise Restaurant",
+    "restaurant in Nairobi CBD",
+    "restaurants in Nairobi CBD",
+    "lunch in Nairobi CBD",
+    "Kenyan food Nairobi",
+    "affordable restaurant Nairobi",
+    "Lyric House restaurant",
+    "breakfast Nairobi CBD",
+    "nyama choma Nairobi CBD",
+    "pilau Nairobi",
+    "meeting place Nairobi CBD",
+    "order lunch Nairobi CBD",
+  ],
+  authors: [{ name: "Top Rise Restaurant" }],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "TAVO — Savour The Difference | Fine Dining Restaurant Nairobi",
-    description: "Experience Nairobi's most refined dining at TAVO, Rosslyn Square. Where every dish tells a story and every visit feels like home.",
-    url: "https://tavo.co.ke",
-    siteName: "TAVO Restaurant",
+    title: "Top Rise Restaurant | Big Plates, Fair Prices, Right in Town",
+    description:
+      "Honest Kenyan cooking at Lyric House in the Nairobi CBD. Meals from KES 300, open daily 8 AM to 10 PM. Order ahead or book a table.",
+    url: siteUrl,
+    siteName: "Top Rise Restaurant",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "TAVO Restaurant - Fine Dining in Rosslyn Square, Nairobi",
+        alt: "Top Rise Restaurant, Lyric House, Nairobi CBD",
       },
     ],
     locale: "en_KE",
@@ -49,8 +75,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TAVO — Savour The Difference | Fine Dining Restaurant Nairobi",
-    description: "Experience Nairobi's most refined dining at TAVO, Rosslyn Square. Where every dish tells a story.",
+    title: "Top Rise Restaurant | Big Plates, Fair Prices, Right in Town",
+    description:
+      "Kenyan meals from KES 300 at Lyric House, Nairobi CBD. Open daily 8 AM to 10 PM.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -66,6 +93,78 @@ export const metadata: Metadata = {
   },
 };
 
+const sectionNames: Record<string, string> = {
+  breakfast: "Breakfast",
+  mains: "Lunch & Supper",
+  grill: "From the Grill",
+  drinks: "Drinks",
+};
+
+const restaurantSchema = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: restaurantInfo.fullName,
+  image: `${siteUrl}/og-image.jpg`,
+  "@id": siteUrl,
+  url: siteUrl,
+  telephone: restaurantInfo.phone,
+  email: restaurantInfo.email,
+  priceRange: "KES 300 - 2,000",
+  servesCuisine: ["Kenyan", "Swahili", "Indian", "Grill", "Halal"],
+  slogan: restaurantInfo.tagline,
+  acceptsReservations: true,
+  paymentAccepted: "M-Pesa, Cash",
+  currenciesAccepted: "KES",
+  hasMap: restaurantInfo.social.google,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Lyric House, Kimathi Street",
+    addressLocality: "Nairobi",
+    addressRegion: "Nairobi County",
+    addressCountry: "KE",
+  },
+  areaServed: "Nairobi CBD",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: restaurantInfo.rating.value,
+    reviewCount: restaurantInfo.rating.count,
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ],
+    opens: "08:00",
+    closes: "22:00",
+  },
+  hasMenu: {
+    "@type": "Menu",
+    url: `${siteUrl}/menu/`,
+    hasMenuSection: Object.keys(sectionNames).map((category) => ({
+      "@type": "MenuSection",
+      name: sectionNames[category],
+      hasMenuItem: menuItems
+        .filter((item) => item.category === category)
+        .map((item) => ({
+          "@type": "MenuItem",
+          name: item.name,
+          description: item.description,
+          offers: {
+            "@type": "Offer",
+            price: item.price,
+            priceCurrency: "KES",
+          },
+        })),
+    })),
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -74,48 +173,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/favicon.ico" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Restaurant",
-              name: "TAVO Restaurant",
-              image: "/og-image.jpg",
-              "@id": "https://tavo.co.ke",
-              url: "https://tavo.co.ke",
-              telephone: "+254-729-575757",
-              priceRange: "$$$",
-              servesCuisine: "Fine Dining",
-              slogan: "Savour The Difference",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "Rosslyn Square Luxury Mall, Redhill Road",
-                addressLocality: "Nairobi",
-                addressCountry: "KE",
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: -1.2278,
-                longitude: 36.8125,
-              },
-              openingHoursSpecification: {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                  "Saturday",
-                  "Sunday",
-                ],
-                opens: "10:00",
-                closes: "23:00",
-              },
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema) }}
         />
       </head>
       <body

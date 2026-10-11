@@ -46,7 +46,7 @@ export function ContactFormWeb3() {
           phone: formData.phone,
           subject: formData.subject,
           message: formData.message,
-          from_name: "TAVO Restaurant Contact Form",
+          from_name: "Top Rise Restaurant Contact Form",
           replyto: formData.email,
         }),
       });

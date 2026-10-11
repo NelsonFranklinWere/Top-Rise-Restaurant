@@ -1,4 +1,5 @@
 /** Centralized WebP image paths — run `npm run optimize-images` after adding new assets */
+/** NOTE: photos are stand-ins until a shoot is done at Top Rise, Lyric House. */
 
 export const heroImages = {
   home: "/hero/homepage.webp",
@@ -7,7 +8,7 @@ export const heroImages = {
 } as const;
 
 export const interiorImages = {
-  inside: "/interior/insideinteriortavo.webp",
+  inside: "/interior/inside-dining-room.webp",
   interior: "/interior/interior.webp",
   ambiance1: "/interior/setupambiance1.webp",
   ambiance2: "/interior/setupambiance2.webp",
@@ -22,6 +23,14 @@ export const foodImages = {
   driedmeatcuisine: "/food/driedmeatcuisine.webp",
   friedchicken: "/food/friedchicken.webp",
   superservedlunch: "/food/superservedlunch.webp",
+  lunch1: "/food/conclunch1.webp",
+  lunch2: "/food/conclunch2.webp",
+  lunch3: "/food/conclunch3.webp",
+  breakfast1: "/food/heavybreakfast1.webp",
+  breakfast2: "/food/heavybreakfast2.webp",
+  breakfast3: "/food/heavybreakfast3.webp",
+  hotHeavyBreakfast: "/food/hotandheavybrekfast.webp",
+  hotBreakfast: "/food/hotbreakfast.webp",
 } as const;
 
 export const drinkImages = {
@@ -30,6 +39,7 @@ export const drinkImages = {
   premiumcoffee: "/drinks/premiumcoffee.webp",
   superjuicewithorange: "/drinks/superjuicewithorange.webp",
   elegantcoffe: "/drinks/elegantcoffe.webp",
+  juicydrink: "/drinks/juicydrink.webp",
 } as const;
 
 /** All unique images used across the site — for parallel preloading */

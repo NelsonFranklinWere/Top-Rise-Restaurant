@@ -1,8 +1,8 @@
-# Deployment Guide for Tavo Fusion Restaurant Website
+# Deployment Guide for Top Rise Fusion Restaurant Website
 
 ## 🎯 Overview
 
-This guide will help you deploy the Tavo Fusion restaurant website to production.
+This guide will help you deploy the Top Rise Fusion restaurant website to production.
 
 ## 📋 Pre-Deployment Checklist
 
@@ -38,7 +38,7 @@ This guide will help you deploy the Tavo Fusion restaurant website to production
 
 3. **Configure Custom Domain**:
    - Go to Project Settings > Domains
-   - Add `tavofusion.com` or your chosen domain
+   - Add `toprise.co.ke` or your chosen domain
    - Update DNS records as instructed
 
 ### Option 2: Netlify
@@ -73,7 +73,7 @@ This guide will help you deploy the Tavo Fusion restaurant website to production
 4. **Configure PM2** (optional):
    ```bash
    npm install -g pm2
-   pm2 start npm --name "tavo-restaurant" -- start
+   pm2 start npm --name "top-rise-restaurant" -- start
    pm2 save
    pm2 startup
    ```
@@ -158,9 +158,9 @@ Edit `lib/data.ts`:
 
 ```typescript
 social: {
-  instagram: "https://instagram.com/tavofusion",
-  facebook: "https://facebook.com/tavofusion",
-  google: "https://maps.google.com/?cid=TavoFusion",
+  instagram: "",
+  facebook: "",
+  google: "https://maps.google.com/?cid=Top RiseFusion",
 },
 ```
 
@@ -223,4 +223,4 @@ With GitHub + Vercel:
 
 ## 🎉 You're Live!
 
-Your Tavo Fusion restaurant website is now live and ready to welcome customers!
+Your Top Rise Fusion restaurant website is now live and ready to welcome customers!

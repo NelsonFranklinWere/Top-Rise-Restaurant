@@ -1,79 +1,89 @@
 import { foodImages, drinkImages, interiorImages } from "./images";
 
 export const luxuryStandards = [
-  "Sommelier-Curated Wines",
-  "Private Dining Suites",
-  "Chef's Table Experience",
-  "Valet at Rosslyn Square",
-  "Artisan Cocktails",
-  "White-Glove Service",
-  "Seasonal Tasting Menus",
-  "Nairobi's Finest Address",
+  "Open 8 AM – 10 PM Daily",
+  "Meals From KES 300",
+  "Order Ahead, Skip the Queue",
+  "Pay by M-Pesa",
+  "Lyric House, Nairobi CBD",
+  "Tables for Meetings & Groups",
+  "Generous Portions",
+  "Breakfast · Lunch · Supper",
 ];
 
+/**
+ * Home page favourites. `menuId` links each card to its dish in the database,
+ * so the name, price and picture follow whatever is saved at /admin, and a
+ * dish that is hidden or deleted there drops off the home page too.
+ * The values below are only the fallback shown before the live menu loads.
+ */
 export const featuredDelicacies = [
   {
-    id: "wagyu",
-    name: "Wagyu Beef Tenderloin",
-    tagline: "Signature Main",
+    id: "pilau",
+    menuId: "7",
+    name: "Beef Pilau",
+    tagline: "The Lunch Favourite",
     description:
-      "Hand-selected wagyu, flame-seared and finished with truffle jus — a centrepiece worthy of Nairobi's most discerning tables.",
-    price: "KES 3,500",
-    image: foodImages.driedmeatcuisine,
-    note: "Chef's Recommendation",
-  },
-  {
-    id: "lobster",
-    name: "Lobster Bisque",
-    tagline: "Opening Delicacy",
-    description:
-      "Silky bisque enriched with cognac and fresh herbs — the kind of opening act expected at a five-star Nairobi evening.",
-    price: "KES 1,500",
-    image: foodImages.seafood,
-    note: "Guest Favourite",
-  },
-  {
-    id: "truffle",
-    name: "Truffle Risotto",
-    tagline: "Vegetarian Prestige",
-    description:
-      "Creamy arborio kissed with black truffle and wild mushrooms — indulgence without compromise.",
-    price: "KES 2,200",
+      "Fragrant spiced rice cooked with tender beef and served with fresh kachumbari. The plate town comes back for.",
+    price: "KES 450",
     image: foodImages.superservedlunch,
-    note: "Seasonal Highlight",
+    note: "Most Ordered",
   },
   {
-    id: "cocktails",
-    name: "Signature Cocktails",
-    tagline: "Bar & Lounge",
+    id: "tilapia",
+    menuId: "10",
+    name: "Whole Tilapia",
+    tagline: "Wet Fry or Dry Fry",
     description:
-      "Crafted by our mixologist — bold, balanced, and designed to complement every course of your evening.",
-    price: "From KES 1,200",
-    image: drinkImages.twoglassescombineddrink,
-    note: "House Special",
+      "A whole lake tilapia with ugali and greens. Fried crisp, or simmered in tomato and onion.",
+    price: "KES 900",
+    image: foodImages.seafood,
+    note: "House Speciality",
+  },
+  {
+    id: "choma",
+    menuId: "13",
+    name: "Nyama Choma",
+    tagline: "Off the Grill",
+    description:
+      "A quarter kilo of goat, grilled slow and served with kachumbari and ugali.",
+    price: "KES 750",
+    image: foodImages.driedmeatcuisine,
+    note: "Weekend Favourite",
+  },
+  {
+    id: "breakfast",
+    menuId: "1",
+    name: "Full Kenyan Breakfast",
+    tagline: "From 8 AM",
+    description:
+      "Eggs, sausage, toast, fruit and a pot of tea or coffee. A proper start before the office.",
+    price: "KES 450",
+    image: foodImages.breakfast1,
+    note: "Morning Special",
   },
 ];
 
 export const experiences = [
   {
-    title: "Private Dining",
-    subtitle: "Intimate. Exclusive. Unforgettable.",
+    title: "Order Ahead",
+    subtitle: "Skip the lunch queue",
     description:
-      "Secluded suites for board dinners, anniversaries, and celebrations — with bespoke menus and dedicated service, as expected at Nairobi's finest hotels.",
+      "Pick your meal on the menu and send it to us on WhatsApp. It is plated and waiting when you walk in, or packed for pickup.",
     icon: "crown" as const,
   },
   {
-    title: "Wine & Spirits",
-    subtitle: "A cellar worth the journey",
+    title: "Meet Over a Meal",
+    subtitle: "A table in the middle of town",
     description:
-      "International vintages and rare pours, curated to pair with our fusion menu — the standard Nairobi's luxury diners demand.",
+      "Meeting a client or catching up with the team? Book a table at Lyric House. Central, easy to find, and nobody rushes you.",
     icon: "wine" as const,
   },
   {
-    title: "Chef's Table",
-    subtitle: "Front-row to the kitchen",
+    title: "Groups & Office Lunch",
+    subtitle: "Feed the whole team",
     description:
-      "Watch artistry unfold. A multi-course journey narrated by our executive chef — limited seats, extraordinary evenings.",
+      "Group tables, bulk orders and standing weekly lunches for offices in the CBD. Tell us the numbers and we handle the rest.",
     icon: "chef" as const,
   },
 ];
@@ -81,48 +91,49 @@ export const experiences = [
 export const ambianceDisplays = [
   {
     src: interiorImages.ambiance1,
-    alt: "TAVO evening ambiance at Rosslyn Square",
+    alt: "Dining room at Top Rise Restaurant, Nairobi CBD",
     span: "col-span-2 row-span-2",
   },
   {
-    src: foodImages.elegantlyfriedfood1,
-    alt: "Artfully plated delicacy",
+    src: foodImages.lunch1,
+    alt: "A lunch plate at Top Rise",
     span: "col-span-1 row-span-1",
   },
   {
     src: interiorImages.inside,
-    alt: "TAVO interior dining room",
+    alt: "Inside Top Rise Restaurant",
     span: "col-span-1 row-span-1",
   },
   {
-    src: drinkImages.chillingdrink,
-    alt: "Premium chilled beverages",
+    src: drinkImages.juicydrink,
+    alt: "Fresh juice at Top Rise",
     span: "col-span-1 row-span-1",
   },
   {
     src: interiorImages.ambiance2,
-    alt: "Luxury table setting",
+    alt: "Table set for a meeting at Top Rise",
     span: "col-span-1 row-span-1",
   },
 ];
 
+/** Reasons guests return. Swap for real Google reviews once the restaurant shares them. */
 export const guestTestimonials = [
   {
     quote:
-      "TAVO sets the bar for fine dining in Nairobi. The attention to detail rivals any international five-star hotel I've visited.",
-    name: "Executive Guest",
-    title: "Regular Patron, Rosslyn",
+      "Plates are generous and prices stay between KES 300 and KES 1,000. You leave full, and you know what it will cost before you sit down.",
+    name: "Portions & Price",
+    title: "Why regulars come back",
   },
   {
     quote:
-      "From the first amuse-bouche to the final pour — every moment felt curated. This is what luxury dining in Kenya should be.",
-    name: "Diplomatic Circle",
-    title: "Private Dining Guest",
+      "Order ahead on WhatsApp and your meal is ready when you arrive. A full lunch fits comfortably inside a one-hour break.",
+    name: "Speed",
+    title: "Built for the lunch hour",
   },
   {
     quote:
-      "The ambience, the service, the flavours — TAVO understands what Nairobi's elite expect. Simply exceptional.",
-    name: "SK Macharia",
-    title: "Valued Guest",
+      "Lyric House is a short walk from most CBD offices and stages, which makes Top Rise an easy place to agree on for a meeting.",
+    name: "Location",
+    title: "Right in town",
   },
 ];

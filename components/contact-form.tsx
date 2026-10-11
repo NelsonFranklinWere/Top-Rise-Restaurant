@@ -45,7 +45,7 @@ Message:
 ${formData.message}
       `);
       
-      const mailtoLink = `mailto:strivego4@gmail.com?subject=${subject}&body=${body}`;
+      const mailtoLink = `mailto:info@toprise.co.ke?subject=${subject}&body=${body}`;
       window.location.href = mailtoLink;
       
       setSubmitStatus("success");

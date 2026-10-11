@@ -31,9 +31,9 @@ export default function AboutPage() {
     <div className="min-h-screen bg-charcoal-950">
       <PageHero
         image={interiorImages.inside}
-        imageAlt="TAVO Restaurant interior, Rosslyn Square Nairobi"
+        imageAlt="Inside Top Rise Restaurant, Lyric House, Nairobi CBD"
         eyebrow="Our Story"
-        title="Crafted with Passion, Served with Style"
+        title="Feeding Town, One Full Plate at a Time"
         subtitle={restaurantInfo.description}
       />
 
@@ -43,8 +43,8 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <SectionHeading
-                eyebrow="The TAVO Story"
-                title="Born in Nairobi, Built for Excellence"
+                eyebrow="The Top Rise Story"
+                title="In the Heart of Nairobi, Built for Every Day"
                 align="left"
               />
               <div className="space-y-6 text-champagne/75 leading-relaxed">
@@ -58,7 +58,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/5] overflow-hidden border border-gold-500/20">
               <OptimizedImage
                 src={interiorImages.ambiance1}
-                alt="TAVO evening ambiance"
+                alt="The dining room at Top Rise"
                 fill
                 className="object-cover"
                 variant="galleryThumb"
@@ -90,7 +90,7 @@ export default function AboutPage() {
             <div className="relative aspect-video overflow-hidden border border-gold-500/20 order-2 lg:order-1">
               <OptimizedImage
                 src={interiorImages.carousel}
-                alt="TAVO kitchen and culinary team"
+                alt="Top Rise kitchen and team"
                 fill
                 className="object-cover"
                 variant="galleryThumb"
@@ -102,17 +102,16 @@ export default function AboutPage() {
                 <p className="text-gold-400 text-xs tracking-[0.3em] uppercase">The Kitchen</p>
               </div>
               <h2 className="font-display text-3xl md:text-4xl text-ivory mb-6">
-                Where Delicacies Are Composed
+                Cooked Fresh, Every Day
               </h2>
               <p className="text-champagne/75 leading-relaxed mb-6">
-                Behind every plate is a kitchen united by a single belief: that Nairobi deserves
-                dining on par with the world&apos;s finest hotels. Our chefs blend international
-                technique with bold, honest flavours — each course a conversation between craft
-                and creativity.
+                Our kitchen starts early. Stews go on in the morning, chapati is rolled by hand,
+                pilau is cooked in the pot and the grill is lit before lunch. Nothing is
+                complicated, and everything is made the way it is made at home.
               </p>
               <p className="text-champagne/75 leading-relaxed">
-                From the first amuse-bouche to the final petit four, every element is considered.
-                This is not cooking for the sake of feeding — it is cuisine designed to be remembered.
+                When the lunch rush arrives, we are ready for it. Order ahead and your plate is
+                waiting. Walk in and you are served in minutes.
               </p>
             </div>
           </div>
@@ -125,7 +124,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="What We Stand For"
             title="Our Values"
-            subtitle="The principles that guide every plate, every pour, and every evening at TAVO."
+            subtitle="Four things you can count on every time you eat at Top Rise."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
             {aboutValues.map((v, i) => {
@@ -149,14 +148,14 @@ export default function AboutPage() {
       {/* Testimonials */}
       <section className="py-24 border-t border-gold-500/10">
         <div className="container mx-auto px-4 max-w-3xl">
-          <SectionHeading eyebrow="Voices" title="What Our Guests Say" />
+          <SectionHeading eyebrow="Our Word" title="What You Can Expect" />
           <div className="mt-12 p-10 md:p-14 border border-gold-500/20 text-center relative">
             <Quote className="w-10 h-10 text-gold-500/30 mx-auto mb-6" strokeWidth={1} />
             <blockquote
-              key={t.name}
+              key={t.quote}
               className="font-display text-xl md:text-2xl text-ivory italic leading-relaxed mb-6 animate-fade-in"
             >
-              &ldquo;{t.quote}&rdquo;
+              {t.quote}
             </blockquote>
             <p className="text-gold-300 font-medium">{t.name}</p>
             <p className="text-champagne/50 text-xs tracking-wider uppercase mt-1">{t.role}</p>
@@ -181,7 +180,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 section-red-accent" />
         <div className="relative container mx-auto px-4 max-w-3xl text-center">
           <h2 className="font-display text-3xl md:text-4xl text-ivory mb-4">
-            Visit Us at <span className="text-gradient-red">Rosslyn Square</span>
+            Visit Us at <span className="text-gradient-red">Lyric House</span>
           </h2>
           <p className="text-champagne/70 mb-8">
             {restaurantInfo.address.street}, {restaurantInfo.address.city}
@@ -191,7 +190,7 @@ export default function AboutPage() {
               Get Directions
             </AppButton>
             <AppButton href="/reservations" variant="outline">
-              Reserve a Table
+              Book a Table
             </AppButton>
           </div>
         </div>

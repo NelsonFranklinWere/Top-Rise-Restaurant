@@ -7,20 +7,20 @@ export function ReservationCta() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-accent-500/50 to-transparent" />
 
       <div className="relative z-10 container mx-auto px-4 max-w-3xl text-center">
-        <p className="text-accent-400 text-xs tracking-[0.35em] uppercase mb-6">Your Table Awaits</p>
+        <p className="text-accent-400 text-xs tracking-[0.35em] uppercase mb-6">Hungry Already?</p>
         <h2 className="font-display text-4xl md:text-5xl text-ivory mb-6">
-          Reserve an Evening of <span className="text-gradient-red">Delicacies</span>
+          Order Ahead or <span className="text-gradient-red">Book a Table</span>
         </h2>
         <p className="text-champagne/70 text-lg mb-10 leading-relaxed">
-          Join Nairobi&apos;s finest for an evening where every detail has been considered.
-          Limited seating — we recommend booking in advance.
+          Send your order before you leave the office and it is ready when you arrive.
+          Coming with company? Book a table and it is held in your name.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <AppButton href="/reservations" variant="primary">
-            Reserve a Table
+          <AppButton href="/menu" variant="primary">
+            Order From the Menu
           </AppButton>
-          <AppButton href="/contact" variant="outline">
-            Enquire
+          <AppButton href="/reservations" variant="outline">
+            Book a Table
           </AppButton>
         </div>
       </div>

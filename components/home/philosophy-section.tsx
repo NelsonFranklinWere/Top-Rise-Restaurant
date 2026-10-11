@@ -6,15 +6,15 @@ export function PhilosophySection() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl" />
       <div className="container mx-auto px-4 max-w-4xl relative z-10">
         <SectionHeading
-          eyebrow="Our Philosophy"
-          title="Where Delicacy Meets Nairobi"
-          subtitle="In a city that demands excellence, TAVO answers with plates that speak softly and flavours that linger. Every ingredient is chosen with intention. Every service gesture, deliberate. This is dining for those who know the difference."
+          eyebrow="Why Top Rise"
+          title="Good Food, Honestly Priced"
+          subtitle="Town is busy and lunch is short. Top Rise serves the Kenyan food you actually want, in portions that fill you, at prices that work every day of the week. Order ahead and it is ready when you arrive."
         />
         <div className="grid md:grid-cols-3 gap-8 mt-16 text-center">
           {[
-            { label: "Craft", value: "Chef-Led" },
-            { label: "Setting", value: "Rosslyn Square" },
-            { label: "Standard", value: "Five-Star" },
+            { label: "From", value: "KES 300" },
+            { label: "Open Daily", value: "8 AM – 10 PM" },
+            { label: "Google Rating", value: "4.3 ★" },
           ].map((stat) => (
             <div key={stat.label} className="border border-gold-500/20 py-8 px-4">
               <p className="text-gold-400 text-xs tracking-[0.3em] uppercase mb-2">{stat.label}</p>

@@ -12,9 +12,9 @@ import { AppButton } from "@/components/ui/app-button";
 import { OrderPromptModal } from "@/components/order-prompt-modal";
 
 const categories: { id: MenuCategory; label: string }[] = [
-  { id: "starters", label: "Starters" },
-  { id: "mains", label: "Main Course" },
-  { id: "desserts", label: "Desserts" },
+  { id: "breakfast", label: "Breakfast" },
+  { id: "mains", label: "Lunch & Supper" },
+  { id: "grill", label: "From the Grill" },
   { id: "drinks", label: "Drinks" },
 ];
 
@@ -23,14 +23,34 @@ const uniqueMenuImages = Array.from(
 );
 
 export default function MenuPage() {
-  const [activeCategory, setActiveCategory] = useState<MenuCategory>("starters");
+  const [activeCategory, setActiveCategory] = useState<MenuCategory>("mains");
   const [orderItem, setOrderItem] = useState<MenuItem | null>(null);
+  // Starts with the built-in menu so the page is never empty, then swaps in
+  // the live menu from the database (edited at /admin).
+  const [items, setItems] = useState<MenuItem[]>(menuItems);
 
   useEffect(() => {
     preloadImages(uniqueMenuImages);
   }, []);
 
-  const filteredItems = menuItems.filter((item) => item.category === activeCategory);
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/menu/", { cache: "no-store" })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (!cancelled && data && Array.isArray(data.items)) {
+          setItems(data.items);
+        }
+      })
+      .catch(() => {
+        // Database unreachable: keep showing the built-in menu.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const filteredItems = items.filter((item) => item.category === activeCategory);
 
   const openOrderPrompt = (item: MenuItem) => setOrderItem(item);
   const closeOrderPrompt = () => setOrderItem(null);
@@ -51,10 +71,10 @@ export default function MenuPage() {
     <div className="min-h-screen bg-charcoal-950">
       <PageHero
         image={heroImages.menu}
-        imageAlt="TAVO Restaurant Menu"
-        eyebrow="Culinary Collection"
+        imageAlt="Top Rise Restaurant menu"
+        eyebrow="Meals From KES 300"
         title="Our Menu"
-        subtitle="Discover our carefully crafted selection of fine fusion delicacies — composed for Nairobi's most discerning tables."
+        subtitle="Kenyan favourites cooked fresh every day. Tap any dish to order ahead on WhatsApp and collect it hot."
       />
 
       {/* Category Tabs */}
@@ -82,7 +102,7 @@ export default function MenuPage() {
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <p className="text-center text-champagne/50 text-sm tracking-wide mb-10">
-            {filteredItems.length} delicacies · {categories.find((c) => c.id === activeCategory)?.label}
+            {filteredItems.length} dishes · {categories.find((c) => c.id === activeCategory)?.label}
             <span className="hidden sm:inline"> · Tap a dish to order</span>
           </p>
 
@@ -167,17 +187,17 @@ export default function MenuPage() {
           {/* CTA */}
           <div className="mt-20 text-center border border-accent-500/20 p-10 md:p-14 section-red-accent">
             <p className="font-display text-2xl md:text-3xl text-ivory mb-3">
-              Ready to savour the difference?
+              Coming with company?
             </p>
             <p className="text-champagne/60 text-sm mb-8 max-w-md mx-auto">
-              Reserve your table or order delivery — Nairobi&apos;s finest, on your schedule.
+              Book a table for your meeting or group, or find us at Lyric House in the CBD.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <AppButton href="/reservations" variant="primary" icon={<UtensilsCrossed className="w-4 h-4" />}>
-                Reserve Your Table
+                Book a Table
               </AppButton>
-              <AppButton href={restaurantInfo.social.bolt} external variant="outline">
-                Order via Bolt
+              <AppButton href={restaurantInfo.social.google} external variant="outline">
+                Get Directions
               </AppButton>
             </div>
           </div>

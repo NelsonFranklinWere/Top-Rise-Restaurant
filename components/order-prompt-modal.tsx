@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import { X, MessageCircle, ExternalLink } from "lucide-react";
+import { X, MessageCircle, ExternalLink, Phone } from "lucide-react";
+import { restaurantInfo } from "@/lib/data";
 import { MenuItem } from "@/lib/types";
 import { buildBoltOrderUrl, buildWhatsAppOrderUrl, formatMenuPrice } from "@/lib/order-links";
 
@@ -93,19 +94,29 @@ export function OrderPromptModal({ item, onClose }: OrderPromptModalProps) {
               Order via WhatsApp
             </a>
 
+            {boltUrl && (
+              <a
+                href={boltUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 w-full px-6 py-4 rounded-full bg-[#34D186] hover:bg-[#2EC079] text-charcoal-950 font-semibold text-sm tracking-wide uppercase transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-[#34D186]/25"
+              >
+                <ExternalLink className="w-5 h-5" />
+                Order via Bolt
+              </a>
+            )}
+
             <a
-              href={boltUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 w-full px-6 py-4 rounded-full bg-[#34D186] hover:bg-[#2EC079] text-charcoal-950 font-semibold text-sm tracking-wide uppercase transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-[#34D186]/25"
+              href={`tel:${restaurantInfo.phone.replace(/\s/g, "")}`}
+              className="flex items-center justify-center gap-3 w-full px-6 py-4 rounded-full border border-gold-500/30 hover:border-gold-500/60 text-ivory font-semibold text-sm tracking-wide uppercase transition-all duration-300"
             >
-              <ExternalLink className="w-5 h-5" />
-              Order via Bolt
+              <Phone className="w-5 h-5" />
+              Call to Order
             </a>
           </div>
 
           <p className="text-center text-champagne/40 text-xs mt-5">
-            Your selection will be included when you open {item.name} on Bolt or WhatsApp.
+            {item.name} is added to your WhatsApp message. Tell us your pickup time and pay by M-Pesa.
           </p>
         </div>
       </div>

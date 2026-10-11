@@ -8,16 +8,16 @@ import { AppButton } from "@/components/ui/app-button";
 import { ReservationFormSimple } from "@/components/reservation-form-simple";
 
 export default function ReservationsPage() {
-  const whatsappUrl = `https://wa.me/${restaurantInfo.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent("Hello TAVO! I would like to reserve a table.")}`;
+  const whatsappUrl = `https://wa.me/${restaurantInfo.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent("Hello Top Rise! I would like to book a table.")}`;
 
   return (
     <div className="min-h-screen bg-charcoal-950">
       <PageHero
         image={heroImages.reservations}
-        imageAlt="TAVO Restaurant Reservations"
-        eyebrow="Book Your Evening"
-        title="Reserve Your Table"
-        subtitle="Experience Nairobi's most refined dining at TAVO — Rosslyn Square."
+        imageAlt="Book a table at Top Rise Restaurant"
+        eyebrow="Meetings · Groups · Family"
+        title="Book a Table"
+        subtitle="Tell us when and how many. Your table at Lyric House is held in your name."
       />
 
       {/* Quick booking */}
@@ -37,7 +37,7 @@ export default function ReservationsPage() {
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center mb-10">
             <p className="text-accent-400 text-xs tracking-[0.3em] uppercase mb-3">Online Request</p>
-            <h2 className="font-display text-3xl text-ivory">Reservation Form</h2>
+            <h2 className="font-display text-3xl text-ivory">Booking Form</h2>
             <p className="text-champagne/60 text-sm mt-3">We&apos;ll confirm your table shortly.</p>
           </div>
           <ReservationFormSimple />
@@ -62,7 +62,7 @@ export default function ReservationsPage() {
               {
                 icon: Star,
                 title: "Special Requests",
-                lines: ["Dietary needs, celebrations,", "and bespoke occasions welcome."],
+                lines: ["Quiet corner, joined tables,", "or food ready on arrival? Just ask."],
               },
             ].map((card) => (
               <div
@@ -83,8 +83,8 @@ export default function ReservationsPage() {
       {/* Assistance CTA */}
       <section className="py-20 section-red-accent border-t border-accent-500/15">
         <div className="container mx-auto px-4 max-w-2xl text-center">
-          <h2 className="font-display text-3xl text-ivory mb-4">Need Immediate Assistance?</h2>
-          <p className="text-champagne/65 mb-8">Our team is ready to help with your reservation.</p>
+          <h2 className="font-display text-3xl text-ivory mb-4">Need a Table Right Now?</h2>
+          <p className="text-champagne/65 mb-8">WhatsApp is fastest. We confirm within minutes during opening hours.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <AppButton href={`tel:${restaurantInfo.phone}`} external variant="primary" icon={<Phone className="w-4 h-4" />}>
               Call Us

@@ -10,7 +10,7 @@ export function HeroSection() {
       <div className="absolute inset-0 z-0">
         <OptimizedImage
           src={heroImages.home}
-          alt="TAVO — Fine dining at Rosslyn Square, Nairobi"
+          alt="Top Rise Restaurant at Lyric House, Nairobi CBD"
           fill
           className="object-cover scale-105"
           variant="hero"
@@ -23,11 +23,11 @@ export function HeroSection() {
 
       <div className="relative z-10 container mx-auto px-4 text-center max-w-5xl pt-24">
         <p className="text-accent-400 text-xs md:text-sm tracking-[0.4em] uppercase mb-6 animate-fade-in font-body">
-          Rosslyn Square · Nairobi · Est. Fine Dining
+          Lyric House · Nairobi CBD · Open 8 AM – 10 PM
         </p>
 
-        <h1 className="font-display text-7xl md:text-8xl lg:text-[10rem] font-semibold text-ivory mb-4 tracking-[0.15em] animate-fade-in leading-none">
-          TAVO
+        <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-semibold text-ivory mb-4 tracking-[0.06em] animate-fade-in leading-none">
+          Top Rise
         </h1>
 
         <div className="flex items-center justify-center gap-4 mb-8 animate-fade-in">
@@ -39,16 +39,15 @@ export function HeroSection() {
         </div>
 
         <p className="text-base md:text-xl text-champagne/90 mb-12 max-w-2xl mx-auto leading-relaxed font-body animate-fade-in">
-          Nairobi&apos;s address for delicacies — where world-class cuisine, refined ambience,
-          and white-glove service meet the standards of the city&apos;s finest hotels.
+          {restaurantInfo.subtext}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 animate-fade-in">
-          <AppButton href="/reservations" variant="primary">
-            Reserve Your Table
+          <AppButton href="/menu" variant="primary" icon={<UtensilsCrossed className="w-4 h-4" />}>
+            See Menu &amp; Order
           </AppButton>
-          <AppButton href="/menu" variant="outline" icon={<UtensilsCrossed className="w-4 h-4" />}>
-            Explore Delicacies
+          <AppButton href="/reservations" variant="outline">
+            Book a Table
           </AppButton>
         </div>
 
@@ -61,6 +60,12 @@ export function HeroSection() {
         >
           Get Directions
         </AppButton>
+
+        <p className="mt-8 text-champagne/70 text-sm tracking-wide animate-fade-in">
+          <span className="text-gold-300 font-semibold">{restaurantInfo.rating.value} ★</span> from {restaurantInfo.rating.count} Google reviews
+          <span className="mx-3 text-gold-500/50">·</span>
+          {restaurantInfo.priceBand}
+        </p>
       </div>
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce-slow text-accent-500/70">

@@ -1,6 +1,6 @@
-# Tavo Fusion Restaurant Website
+# Top Rise Fusion Restaurant Website
 
-A modern, elegant, SEO-optimized restaurant website for Tavo Fusion—an Indian fusion eatery in Nairobi, Kenya.
+A modern, elegant, SEO-optimized restaurant website for Top Rise Fusion—an Indian fusion eatery in Nairobi, Kenya.
 
 ## 🌟 Features
 
@@ -34,7 +34,7 @@ A modern, elegant, SEO-optimized restaurant website for Tavo Fusion—an Indian 
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd tavo-restaurant
+cd top-rise-restaurant
 ```
 
 2. Install dependencies:
@@ -176,7 +176,7 @@ npx tsc --noEmit
 
 ## 📄 License
 
-Copyright © 2025 Tavo Fusion. All rights reserved.
+Copyright © 2025 Top Rise Fusion. All rights reserved.
 
 ## 👥 Credits
 

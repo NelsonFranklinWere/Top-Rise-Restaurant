@@ -27,3 +27,6 @@ yarn-error.log*
 # Build outputs
 build/
 .next/
+tsconfig.tsbuildinfo
+# Regenerated on every build from NEXT_PUBLIC_BASE_URL
+public/sitemap.xml

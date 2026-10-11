@@ -8,21 +8,24 @@ export function formatMenuPrice(price: number) {
 export function buildWhatsAppOrderUrl(item: MenuItem): string {
   const phone = restaurantInfo.whatsapp.replace(/[^0-9]/g, "");
   const message = [
-    `Hello TAVO! I would like to order:`,
+    `Hello Top Rise! I would like to order:`,
     ``,
     `*${item.name}*`,
     `Price: ${formatMenuPrice(item.price)}`,
     ``,
-    item.description,
+    `Pickup or eat in at: (time)`,
+    `Name:`,
     ``,
-    `Please confirm availability. Thank you!`,
+    `Please confirm. Thank you!`,
   ].join("\n");
 
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 }
 
+/** Returns an empty string when the restaurant has no Bolt Food listing. */
 export function buildBoltOrderUrl(item: MenuItem): string {
   const base = restaurantInfo.social.bolt;
+  if (!base) return "";
   const note = encodeURIComponent(item.name);
-  return `${base}?utm_source=tavo_website&item=${note}`;
+  return `${base}?utm_source=toprise_website&item=${note}`;
 }

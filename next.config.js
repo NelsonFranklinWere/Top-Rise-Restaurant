@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
+  // Runs as a Node server (next start) so the admin API can reach PostgreSQL.
   trailingSlash: true,
   images: {
     unoptimized: true,

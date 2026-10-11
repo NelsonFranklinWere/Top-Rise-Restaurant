@@ -12,10 +12,10 @@ export default function ContactPage() {
     <div className="min-h-screen bg-charcoal-950">
       <PageHero
         image={interiorImages.inside}
-        imageAlt="Contact TAVO Restaurant Nairobi"
-        eyebrow="Reach Out"
+        imageAlt="Contact Top Rise Restaurant, Nairobi CBD"
+        eyebrow="Order · Book · Ask"
         title={contactMessage.headline}
-        subtitle="Rosslyn Square · Redhill Road · Nairobi"
+        subtitle="Lyric House · Nairobi CBD · Open 8 AM – 10 PM daily"
       />
 
       {/* Extended Welcome Message */}
@@ -86,7 +86,7 @@ export default function ContactPage() {
                       >
                         {restaurantInfo.phone}
                       </a>
-                      <p className="text-champagne/50 text-xs mt-2">Reservations & enquiries</p>
+                      <p className="text-champagne/50 text-xs mt-2">Orders &amp; table bookings</p>
                     </>
                   ),
                 },
@@ -101,7 +101,7 @@ export default function ContactPage() {
                       >
                         {restaurantInfo.email}
                       </a>
-                      <p className="text-champagne/50 text-xs mt-2">Events & special requests</p>
+                      <p className="text-champagne/50 text-xs mt-2">Group &amp; office orders</p>
                     </>
                   ),
                 },
@@ -112,7 +112,7 @@ export default function ContactPage() {
                     <>
                       <p className="text-champagne/70 text-sm">{restaurantInfo.hours.mon_thu}</p>
                       <p className="text-champagne/70 text-sm">{restaurantInfo.hours.fri_sun}</p>
-                      <p className="text-champagne/50 text-xs mt-2">Book ahead for weekends</p>
+                      <p className="text-champagne/50 text-xs mt-2">Breakfast, lunch &amp; supper</p>
                     </>
                   ),
                 },
@@ -131,14 +131,14 @@ export default function ContactPage() {
             <div className="border border-gold-500/15 overflow-hidden">
               <div className="aspect-square md:aspect-auto md:h-full min-h-[300px]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8!2d36.8125!3d-1.2278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f0b8b8b8b8b8b%3A0x8b8b8b8b8b8b8b8b!2sRosslyn%20Square%20Luxury%20Mall%2C%20Redhill%20Road%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1234567890"
+                  src="https://www.google.com/maps?q=Top+Rise+Restaurant+Lyric+House+Nairobi&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0, minHeight: "100%" }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="TAVO location map"
+                  title="Top Rise Restaurant location map"
                 />
               </div>
             </div>
@@ -153,7 +153,7 @@ export default function ContactPage() {
             <p className="text-gold-400 text-xs tracking-[0.3em] uppercase mb-4">Write to Us</p>
             <h2 className="font-display text-3xl text-ivory mb-4">Send a Message</h2>
             <p className="text-champagne/60 text-sm">
-              We typically respond within a few hours during service times.
+              For the fastest reply, WhatsApp us. We answer forms within a few hours.
             </p>
           </div>
           <ContactFormSimple />
@@ -167,7 +167,7 @@ export default function ContactPage() {
             Get Directions
           </AppButton>
           <AppButton href="/reservations" variant="outline">
-            Reserve a Table
+            Book a Table
           </AppButton>
         </div>
       </section>
@@ -181,7 +181,7 @@ export default function ContactPage() {
               className="group p-6 border border-gold-500/15 hover:border-gold-500/35 text-center transition-all hover:bg-gold-500/5"
             >
               <Clock className="w-5 h-5 text-gold-400 mx-auto mb-3" strokeWidth={1.5} />
-              <h3 className="font-display text-ivory mb-1">Reserve</h3>
+              <h3 className="font-display text-ivory mb-1">Book</h3>
               <p className="text-champagne/50 text-xs">Book your table</p>
             </Link>
             <a
@@ -192,7 +192,7 @@ export default function ContactPage() {
             >
               <MessageSquare className="w-5 h-5 text-gold-400 mx-auto mb-3" strokeWidth={1.5} />
               <h3 className="font-display text-ivory mb-1">WhatsApp</h3>
-              <p className="text-champagne/50 text-xs">Instant chat</p>
+              <p className="text-champagne/50 text-xs">Order ahead</p>
             </a>
             <a
               href={`tel:${restaurantInfo.phone}`}
