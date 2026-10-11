@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, Instagram, Facebook, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, Clock } from "lucide-react";
 import { restaurantInfo } from "@/lib/data";
 
 export function Footer() {
@@ -9,43 +9,28 @@ export function Footer() {
       <div className="container mx-auto px-4 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           <div className="md:col-span-5">
-            <h3 className="font-display text-3xl text-gradient-gold tracking-[0.06em] mb-6">Top Rise</h3>
+            <h3 className="font-display text-3xl text-gradient-gold tracking-[0.15em] mb-6">{restaurantInfo.shortName}</h3>
             <p className="text-champagne/70 mb-6 max-w-md leading-relaxed text-sm">
-              Big plates, fair prices, right in town. Honest Kenyan cooking at Lyric House
-              in the Nairobi CBD, open every day from 8 AM to 10 PM. Order ahead, pay by
-              M-Pesa, or book a table for your next meeting.
+              {restaurantInfo.subtext}
             </p>
             <div className="flex gap-4">
-              {restaurantInfo.social.instagram && (
-                <a
-                  href={restaurantInfo.social.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2.5 border border-gold-500/25 hover:border-gold-500/50 hover:bg-gold-500/10 transition-all"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-4 h-4 text-gold-400" />
-                </a>
-              )}
-              {restaurantInfo.social.facebook && (
-                <a
-                  href={restaurantInfo.social.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2.5 border border-gold-500/25 hover:border-gold-500/50 hover:bg-gold-500/10 transition-all"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="w-4 h-4 text-gold-400" />
-                </a>
-              )}
               <a
-                href={restaurantInfo.social.google}
+                href={restaurantInfo.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 border border-gold-500/25 hover:border-gold-500/50 hover:bg-gold-500/10 transition-all"
-                aria-label="Find us on Google Maps"
+                aria-label="Instagram"
               >
-                <MapPin className="w-4 h-4 text-gold-400" />
+                <Instagram className="w-4 h-4 text-gold-400" />
+              </a>
+              <a
+                href={restaurantInfo.social.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 border border-gold-500/25 hover:border-gold-500/50 hover:bg-gold-500/10 transition-all text-gold-400 text-xs font-semibold tracking-wider"
+                aria-label="TikTok"
+              >
+                TT
               </a>
             </div>
           </div>
@@ -58,8 +43,8 @@ export function Footer() {
                 { href: "/about", label: "About" },
                 { href: "/menu", label: "Menu" },
                 { href: "/gallery", label: "Gallery" },
-                { href: "/events", label: "Meetings & Groups" },
-                { href: "/reservations", label: "Book a Table" },
+                { href: "/events", label: "Events" },
+                { href: "/reservations", label: "Reservations" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (
                 <li key={link.href}>
@@ -110,14 +95,16 @@ export function Footer() {
 
         <div className="border-t border-gold-500/15 mt-14 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-champagne/40 tracking-wide">
-            © {new Date().getFullYear()} Top Rise Restaurant · Lyric House, Nairobi CBD
+            © {new Date().getFullYear()} {restaurantInfo.name} · Lyric House, Nairobi CBD
           </p>
-          <p className="text-xs text-champagne/40 tracking-wide">
-            Website by{" "}
-            <a href="https://cresdynamics.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold-400 transition-colors">
-              CRES Dynamics
-            </a>
-          </p>
+          <div className="flex gap-8 text-xs">
+            <Link href="/privacy" className="text-champagne/40 hover:text-gold-400 transition-colors">
+              Privacy
+            </Link>
+            <Link href="/terms" className="text-champagne/40 hover:text-gold-400 transition-colors">
+              Terms
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

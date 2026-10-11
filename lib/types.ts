@@ -1,4 +1,4 @@
-export type MenuCategory = "breakfast" | "mains" | "grill" | "drinks";
+export type MenuCategory = "starters" | "mains" | "desserts" | "drinks";
 
 export interface MenuItem {
   id: string;
@@ -11,9 +11,9 @@ export interface MenuItem {
   isVegan?: boolean;
   spiceLevel?: "mild" | "medium" | "hot";
   allergens?: string[];
-  /** False hides the dish from the public menu, for example when sold out. */
+  /** Set by the menu database: false hides the dish from the public menu. */
   isAvailable?: boolean;
-  /** Position within its category; lower numbers show first. */
+  /** Position within its section, lowest first. */
   sortOrder?: number;
 }
 

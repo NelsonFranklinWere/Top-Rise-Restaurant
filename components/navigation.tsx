@@ -6,7 +6,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { preloadImages } from "@/lib/images";
-import { menuItems } from "@/lib/data";
+import { menuItems, restaurantInfo } from "@/lib/data";
 
 const menuImageUrls = Array.from(
   new Set(menuItems.map((item) => item.image).filter((img): img is string => Boolean(img)))
@@ -17,7 +17,7 @@ const navLinks = [
   { href: "/about", label: "About" },
   { href: "/menu", label: "Menu" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/events", label: "Meetings & Groups" },
+  { href: "/events", label: "Events" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -76,12 +76,12 @@ export function Navigation() {
           <div className="flex items-center justify-between h-20">
             <Link
               href="/"
-              className="font-display text-2xl md:text-3xl font-semibold text-gradient-gold tracking-[0.08em] hover:opacity-90 transition-opacity"
+              className="font-display text-2xl md:text-3xl font-semibold text-gradient-gold tracking-[0.2em] hover:opacity-90 transition-opacity"
             >
-              Top Rise
+              {restaurantInfo.shortName}
             </Link>
 
-            <div className="hidden md:flex items-center gap-7 lg:gap-9">
+            <div className="hidden md:flex items-center gap-10">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -103,7 +103,7 @@ export function Navigation() {
                 prefetch
                 className="px-6 py-2.5 rounded-full bg-gradient-to-r from-accent-600 to-accent-500 hover:from-accent-500 hover:to-accent-400 text-white text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300 shadow-lg shadow-accent-500/30 hover:shadow-accent-500/50 hover:scale-105"
               >
-                Book a Table
+                Reserve
               </Link>
             </div>
 
@@ -142,7 +142,7 @@ export function Navigation() {
                   onClick={() => setIsOpen(false)}
                   className="px-6 py-3 rounded-full bg-gradient-to-r from-accent-600 to-accent-500 text-white text-sm tracking-[0.15em] uppercase font-semibold text-center mt-2 shadow-lg shadow-accent-500/30"
                 >
-                  Book a Table
+                  Reserve Table
                 </Link>
               </div>
             </div>

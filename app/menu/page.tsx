@@ -12,9 +12,9 @@ import { AppButton } from "@/components/ui/app-button";
 import { OrderPromptModal } from "@/components/order-prompt-modal";
 
 const categories: { id: MenuCategory; label: string }[] = [
-  { id: "breakfast", label: "Breakfast" },
-  { id: "mains", label: "Lunch & Supper" },
-  { id: "grill", label: "From the Grill" },
+  { id: "starters", label: "Starters" },
+  { id: "mains", label: "Main Course" },
+  { id: "desserts", label: "Desserts" },
   { id: "drinks", label: "Drinks" },
 ];
 
@@ -23,7 +23,7 @@ const uniqueMenuImages = Array.from(
 );
 
 export default function MenuPage() {
-  const [activeCategory, setActiveCategory] = useState<MenuCategory>("mains");
+  const [activeCategory, setActiveCategory] = useState<MenuCategory>("starters");
   const [orderItem, setOrderItem] = useState<MenuItem | null>(null);
   // Starts with the built-in menu so the page is never empty, then swaps in
   // the live menu from the database (edited at /admin).
@@ -71,10 +71,10 @@ export default function MenuPage() {
     <div className="min-h-screen bg-charcoal-950">
       <PageHero
         image={heroImages.menu}
-        imageAlt="Top Rise Restaurant menu"
-        eyebrow="Meals From KES 300"
+        imageAlt="Top Rise Restaurant Menu"
+        eyebrow="Culinary Collection"
         title="Our Menu"
-        subtitle="Kenyan favourites cooked fresh every day. Tap any dish to order ahead on WhatsApp and collect it hot."
+        subtitle="Discover our Halal menu — sizzling grills, Arabian mandi, breakfast spreads, and refreshing drinks from Top Rise on Kimathi Street."
       />
 
       {/* Category Tabs */}
@@ -102,7 +102,7 @@ export default function MenuPage() {
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 max-w-7xl">
           <p className="text-center text-champagne/50 text-sm tracking-wide mb-10">
-            {filteredItems.length} dishes · {categories.find((c) => c.id === activeCategory)?.label}
+            {filteredItems.length} delicacies · {categories.find((c) => c.id === activeCategory)?.label}
             <span className="hidden sm:inline"> · Tap a dish to order</span>
           </p>
 
@@ -187,17 +187,17 @@ export default function MenuPage() {
           {/* CTA */}
           <div className="mt-20 text-center border border-accent-500/20 p-10 md:p-14 section-red-accent">
             <p className="font-display text-2xl md:text-3xl text-ivory mb-3">
-              Coming with company?
+              Ready to savour the difference?
             </p>
             <p className="text-champagne/60 text-sm mb-8 max-w-md mx-auto">
-              Book a table for your meeting or group, or find us at Lyric House in the CBD.
+              Reserve your table or order delivery — Nairobi&apos;s finest, on your schedule.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <AppButton href="/reservations" variant="primary" icon={<UtensilsCrossed className="w-4 h-4" />}>
-                Book a Table
+                Reserve Your Table
               </AppButton>
-              <AppButton href={restaurantInfo.social.google} external variant="outline">
-                Get Directions
+              <AppButton href={restaurantInfo.social.bolt} external variant="outline">
+                Order via Bolt
               </AppButton>
             </div>
           </div>

@@ -1,56 +1,39 @@
+/**
+ * Production entry point: Express in front of the Next.js server.
+ * The site is no longer a static export, because /admin and the menu API
+ * read and write PostgreSQL. Run `npm run build` first, then `npm start`.
+ */
 const express = require("express");
-const path = require("path");
-const fs = require("fs");
+const next = require("next");
 
 const port = parseInt(process.env.PORT || "3000", 10);
 const hostname = process.env.HOSTNAME || "0.0.0.0";
-const isDev = process.env.NODE_ENV !== "production";
-const outDir = path.join(__dirname, "out");
 
-if (!fs.existsSync(outDir)) {
-  console.error("Build output not found. Run: npm run build");
-  process.exit(1);
-}
+const nextApp = next({ dev: false, hostname, port });
+const handle = nextApp.getRequestHandler();
 
-const app = express();
-app.disable("x-powered-by");
+nextApp
+  .prepare()
+  .then(() => {
+    const app = express();
+    app.disable("x-powered-by");
 
-app.get("/health", (_req, res) => {
-  res.status(200).json({
-    status: "ok",
-    service: "top-rise-restaurant",
-    runtime: "nodejs-express",
-  });
-});
+    app.get("/health", (_req, res) => {
+      res.status(200).json({
+        status: "ok",
+        service: "top-rise-restaurant",
+        runtime: "nodejs-express-next",
+      });
+    });
 
-app.use(
-  express.static(outDir, {
-    maxAge: isDev ? 0 : "365d",
-    etag: true,
-    index: "index.html",
+    app.use((req, res) => handle(req, res));
+
+    app.listen(port, hostname, () => {
+      const host = hostname === "0.0.0.0" ? "localhost" : hostname;
+      console.log(`> Top Rise Restaurant server running at http://${host}:${port}`);
+    });
   })
-);
-
-// Fallback for Next.js static export routes (e.g. /about/ -> about/index.html)
-app.get("*", (req, res) => {
-  const cleanPath = req.path.replace(/\/$/, "") || "/";
-  const htmlPath = path.join(outDir, cleanPath, "index.html");
-
-  if (fs.existsSync(htmlPath)) {
-    return res.sendFile(htmlPath);
-  }
-
-  const notFound = path.join(outDir, "404.html");
-  if (fs.existsSync(notFound)) {
-    return res.status(404).sendFile(notFound);
-  }
-
-  res.status(404).send("Not found");
-});
-
-app.listen(port, hostname, () => {
-  const host = hostname === "0.0.0.0" ? "localhost" : hostname;
-  console.log(`> Top Rise server running at http://${host}:${port}`);
-  console.log(`> Runtime: Express (no Next.js server)`);
-  console.log(`> Mode: ${isDev ? "development" : "production"}`);
-});
+  .catch((error) => {
+    console.error("Server failed to start. Run `npm run build` first.", error);
+    process.exit(1);
+  });

@@ -50,6 +50,7 @@ export function isValidSessionToken(token: string | undefined): boolean {
   return Number(expires) > Date.now();
 }
 
-export function isAdminRequest(): boolean {
-  return isValidSessionToken(cookies().get(SESSION_COOKIE)?.value);
+export async function isAdminRequest(): Promise<boolean> {
+  const store = await cookies();
+  return isValidSessionToken(store.get(SESSION_COOKIE)?.value);
 }

@@ -12,7 +12,9 @@ import {
   aboutMilestones,
   aboutValues,
   aboutTestimonials,
+  venueHighlights,
 } from "@/lib/pages-data";
+import { luxuryAmenities } from "@/lib/home-data";
 import { useState, useEffect } from "react";
 
 export default function AboutPage() {
@@ -31,9 +33,9 @@ export default function AboutPage() {
     <div className="min-h-screen bg-charcoal-950">
       <PageHero
         image={interiorImages.inside}
-        imageAlt="Inside Top Rise Restaurant, Lyric House, Nairobi CBD"
+        imageAlt="Top Rise Restaurant interior, Lyric House Nairobi CBD"
         eyebrow="Our Story"
-        title="Feeding Town, One Full Plate at a Time"
+        title="Luxury on Kimathi Street"
         subtitle={restaurantInfo.description}
       />
 
@@ -44,7 +46,7 @@ export default function AboutPage() {
             <div>
               <SectionHeading
                 eyebrow="The Top Rise Story"
-                title="In the Heart of Nairobi, Built for Every Day"
+                title="Built to Dominate the CBD"
                 align="left"
               />
               <div className="space-y-6 text-champagne/75 leading-relaxed">
@@ -58,7 +60,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/5] overflow-hidden border border-gold-500/20">
               <OptimizedImage
                 src={interiorImages.ambiance1}
-                alt="The dining room at Top Rise"
+                alt="Top Rise Restaurant evening ambiance"
                 fill
                 className="object-cover"
                 variant="galleryThumb"
@@ -90,7 +92,7 @@ export default function AboutPage() {
             <div className="relative aspect-video overflow-hidden border border-gold-500/20 order-2 lg:order-1">
               <OptimizedImage
                 src={interiorImages.carousel}
-                alt="Top Rise kitchen and team"
+                alt="Top Rise Restaurant kitchen and culinary team"
                 fill
                 className="object-cover"
                 variant="galleryThumb"
@@ -102,18 +104,47 @@ export default function AboutPage() {
                 <p className="text-gold-400 text-xs tracking-[0.3em] uppercase">The Kitchen</p>
               </div>
               <h2 className="font-display text-3xl md:text-4xl text-ivory mb-6">
-                Cooked Fresh, Every Day
+                Where Excellence Is the Minimum
               </h2>
               <p className="text-champagne/75 leading-relaxed mb-6">
-                Our kitchen starts early. Stews go on in the morning, chapati is rolled by hand,
-                pilau is cooked in the pot and the grill is lit before lunch. Nothing is
-                complicated, and everything is made the way it is made at home.
+                Behind every sizzling grill and every mandi rice dish is a kitchen that believes
+                Nairobi CBD deserves more than ordinary. Halal food rated 4.3 on Bolt Food —
+                mixed grills, butter chicken, garden salads, and sharing platters that define
+                Kimathi Street luxury.
               </p>
               <p className="text-champagne/75 leading-relaxed">
-                When the lunch rush arrives, we are ready for it. Order ahead and your plate is
-                waiting. Walk in and you are served in minutes.
+                Swift service from a team that moves fast without cutting corners. Vegan options,
+                happy-hour specials, and a menu wide enough to host any table — from balcony
+                dinners to conference lunches.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Venue Highlights */}
+      <section className="py-24 md:py-32 bg-charcoal-900 border-y border-gold-500/10">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <SectionHeading
+            eyebrow="The Top Rise Advantage"
+            title="What Competitors Cannot Match"
+            subtitle="Space, speed, connectivity, and ambience — the layers of luxury that make Top Rise the standout on Kimathi Street."
+          />
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-14">
+            {venueHighlights.map((item) => (
+              <div key={item.label} className="text-center p-6 border border-gold-500/15 hover:border-gold-500/35 transition-colors">
+                <p className="text-gold-400 text-[10px] tracking-[0.25em] uppercase mb-2">{item.label}</p>
+                <p className="font-display text-lg text-ivory">{item.value}</p>
+              </div>
+            ))}
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+            {luxuryAmenities.slice(0, 4).map((amenity) => (
+              <div key={amenity.title} className="p-6 border border-gold-500/10 bg-charcoal-950/50">
+                <h3 className="font-display text-lg text-ivory mb-2">{amenity.title}</h3>
+                <p className="text-champagne/60 text-sm leading-relaxed">{amenity.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -124,7 +155,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="What We Stand For"
             title="Our Values"
-            subtitle="Four things you can count on every time you eat at Top Rise."
+            subtitle="The principles that guide every plate, every pour, and every evening at Top Rise Restaurant."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
             {aboutValues.map((v, i) => {
@@ -148,14 +179,14 @@ export default function AboutPage() {
       {/* Testimonials */}
       <section className="py-24 border-t border-gold-500/10">
         <div className="container mx-auto px-4 max-w-3xl">
-          <SectionHeading eyebrow="Our Word" title="What You Can Expect" />
+          <SectionHeading eyebrow="Voices" title="What Our Guests Say" />
           <div className="mt-12 p-10 md:p-14 border border-gold-500/20 text-center relative">
             <Quote className="w-10 h-10 text-gold-500/30 mx-auto mb-6" strokeWidth={1} />
             <blockquote
-              key={t.quote}
+              key={t.name}
               className="font-display text-xl md:text-2xl text-ivory italic leading-relaxed mb-6 animate-fade-in"
             >
-              {t.quote}
+              &ldquo;{t.quote}&rdquo;
             </blockquote>
             <p className="text-gold-300 font-medium">{t.name}</p>
             <p className="text-champagne/50 text-xs tracking-wider uppercase mt-1">{t.role}</p>
@@ -189,8 +220,11 @@ export default function AboutPage() {
             <AppButton href={restaurantInfo.social.google} external variant="primary">
               Get Directions
             </AppButton>
+            <AppButton href={restaurantInfo.social.bolt} external variant="outline">
+              Order on Bolt Food
+            </AppButton>
             <AppButton href="/reservations" variant="outline">
-              Book a Table
+              Reserve a Table
             </AppButton>
           </div>
         </div>

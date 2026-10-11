@@ -38,7 +38,11 @@ export async function POST(request: Request) {
     response.cookies.set(SESSION_COOKIE, token, {
       httpOnly: true,
       sameSite: "strict",
-      secure: process.env.NODE_ENV === "production",
+      // Secure whenever the visitor is on HTTPS (directly or behind a proxy),
+      // so the built site can still be signed in to over plain http://localhost.
+      secure:
+        request.headers.get("x-forwarded-proto")?.split(",")[0].trim() === "https" ||
+        new URL(request.url).protocol === "https:",
       path: "/",
       maxAge,
     });

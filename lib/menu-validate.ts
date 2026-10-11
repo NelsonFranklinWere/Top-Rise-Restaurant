@@ -2,9 +2,9 @@ import type { MenuInput } from "./db";
 import type { MenuCategory } from "./types";
 
 export const MENU_CATEGORIES: { id: MenuCategory; label: string }[] = [
-  { id: "breakfast", label: "Breakfast" },
-  { id: "mains", label: "Lunch & Supper" },
-  { id: "grill", label: "From the Grill" },
+  { id: "starters", label: "Starters" },
+  { id: "mains", label: "Main Course" },
+  { id: "desserts", label: "Desserts" },
   { id: "drinks", label: "Drinks" },
 ];
 

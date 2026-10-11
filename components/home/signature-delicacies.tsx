@@ -22,7 +22,7 @@ type FeaturedDish = {
 
 export function SignatureDelicacies() {
   // Starts with the built-in cards so the section is never empty, then takes
-  // name, description, price and picture from the live menu (edited at /admin).
+  // name, price and picture from the live menu (edited at /admin).
   const [featuredDelicacies, setFeaturedDelicacies] = useState<FeaturedDish[]>(fallbackDelicacies);
 
   useEffect(() => {
@@ -41,7 +41,6 @@ export function SignatureDelicacies() {
               {
                 ...dish,
                 name: item.name,
-                description: item.description || dish.description,
                 price: formatMenuPrice(item.price),
                 image: item.image || dish.image,
               },
@@ -63,9 +62,9 @@ export function SignatureDelicacies() {
     <section className="py-24 md:py-32 bg-charcoal-900">
       <div className="container mx-auto px-4 max-w-7xl">
         <SectionHeading
-          eyebrow="Guest Favourites"
-          title="The Plates Town Comes Back For"
-          subtitle="Four of our most ordered meals. The full menu has breakfast, mains, grill and drinks."
+          eyebrow="Signature Delicacies"
+          title="Signature Plates"
+          subtitle="Rated 4.3 on Bolt Food — a curated selection from our kitchen, each dish crafted to dominate Kimathi Street."
         />
 
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mt-16">
@@ -102,7 +101,7 @@ export function SignatureDelicacies() {
                     href="/menu"
                     className="text-gold-400 hover:text-gold-300 text-sm tracking-wide flex items-center gap-2 transition-colors"
                   >
-                    Order Now <ArrowRight className="w-4 h-4" />
+                    View Menu <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import { ChevronDown, MapPin, UtensilsCrossed } from "lucide-react";
+import { ChevronDown, MapPin, UtensilsCrossed, ExternalLink } from "lucide-react";
 import { OptimizedImage } from "@/components/optimized-image";
 import { AppButton } from "@/components/ui/app-button";
 import { heroImages } from "@/lib/images";
@@ -10,7 +10,7 @@ export function HeroSection() {
       <div className="absolute inset-0 z-0">
         <OptimizedImage
           src={heroImages.home}
-          alt="Top Rise Restaurant at Lyric House, Nairobi CBD"
+          alt="Top Rise Restaurant — luxury Halal dining on Kimathi Street, Nairobi CBD"
           fill
           className="object-cover scale-105"
           variant="hero"
@@ -23,12 +23,15 @@ export function HeroSection() {
 
       <div className="relative z-10 container mx-auto px-4 text-center max-w-5xl pt-24">
         <p className="text-accent-400 text-xs md:text-sm tracking-[0.4em] uppercase mb-6 animate-fade-in font-body">
-          Lyric House · Nairobi CBD · Open 8 AM – 10 PM
+          Lyric House · Kimathi Street · Nairobi CBD · Est. Luxury
         </p>
 
-        <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-semibold text-ivory mb-4 tracking-[0.06em] animate-fade-in leading-none">
-          Top Rise
+        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold text-ivory mb-4 tracking-[0.12em] animate-fade-in leading-tight">
+          {restaurantInfo.shortName}
         </h1>
+        <p className="text-sm md:text-base tracking-[0.35em] uppercase text-champagne/70 mb-6 animate-fade-in">
+          Restaurant
+        </p>
 
         <div className="flex items-center justify-center gap-4 mb-8 animate-fade-in">
           <span className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent to-accent-500/60" />
@@ -43,11 +46,14 @@ export function HeroSection() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 animate-fade-in">
-          <AppButton href="/menu" variant="primary" icon={<UtensilsCrossed className="w-4 h-4" />}>
-            See Menu &amp; Order
+          <AppButton href="/reservations" variant="primary">
+            Reserve Your Table
           </AppButton>
-          <AppButton href="/reservations" variant="outline">
-            Book a Table
+          <AppButton href={restaurantInfo.social.bolt} external variant="outline" icon={<ExternalLink className="w-4 h-4" />}>
+            Order on Bolt
+          </AppButton>
+          <AppButton href="/menu" variant="outline" icon={<UtensilsCrossed className="w-4 h-4" />}>
+            Explore Menu
           </AppButton>
         </div>
 
@@ -60,12 +66,6 @@ export function HeroSection() {
         >
           Get Directions
         </AppButton>
-
-        <p className="mt-8 text-champagne/70 text-sm tracking-wide animate-fade-in">
-          <span className="text-gold-300 font-semibold">{restaurantInfo.rating.value} ★</span> from {restaurantInfo.rating.count} Google reviews
-          <span className="mx-3 text-gold-500/50">·</span>
-          {restaurantInfo.priceBand}
-        </p>
       </div>
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce-slow text-accent-500/70">

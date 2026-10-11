@@ -40,7 +40,7 @@ export function WhatsAppFloat() {
 
   const handleWhatsAppClick = () => {
     const phoneNumber = restaurantInfo.whatsapp.replace(/[^0-9]/g, '');
-    const message = "Hello Top Rise! I would like to place an order.";
+    const message = "Hi! I'd like to know more about Top Rise Restaurant.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -59,8 +59,8 @@ export function WhatsAppFloat() {
           <div className="flex items-center gap-3">
             <div className="flex-1">
               <p className="text-gray-700 text-sm font-medium leading-tight">
-                Order ahead on WhatsApp<br />
-                and skip the queue
+                Let&apos;s serve you today<br />
+                at Top Rise
               </p>
             </div>
             <button

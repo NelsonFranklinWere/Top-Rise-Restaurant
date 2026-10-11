@@ -9,7 +9,7 @@ const unauthorized = () => NextResponse.json({ error: "Sign in first" }, { statu
 
 /** Every dish, including hidden ones. */
 export async function GET() {
-  if (!isAdminRequest()) return unauthorized();
+  if (!(await isAdminRequest())) return unauthorized();
   try {
     return NextResponse.json({ items: await listMenu({ includeUnavailable: true }) });
   } catch (error) {
@@ -19,7 +19,7 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  if (!isAdminRequest()) return unauthorized();
+  if (!(await isAdminRequest())) return unauthorized();
   const parsed = parseMenuInput(await request.json().catch(() => null));
   if (!parsed.ok) return NextResponse.json({ error: parsed.error }, { status: 400 });
   try {

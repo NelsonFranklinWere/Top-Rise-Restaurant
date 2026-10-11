@@ -12,9 +12,9 @@ function parseId(raw: string): number | null {
   return Number.isInteger(id) && id > 0 ? id : null;
 }
 
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
-  if (!isAdminRequest()) return unauthorized();
-  const id = parseId(params.id);
+export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  if (!(await isAdminRequest())) return unauthorized();
+  const id = parseId((await params).id);
   if (!id) return NextResponse.json({ error: "Unknown dish" }, { status: 404 });
 
   const parsed = parseMenuInput(await request.json().catch(() => null));
@@ -30,9 +30,9 @@ export async function PUT(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function DELETE(_request: Request, { params }: { params: { id: string } }) {
-  if (!isAdminRequest()) return unauthorized();
-  const id = parseId(params.id);
+export async function DELETE(_request: Request, { params }: { params: Promise<{ id: string }> }) {
+  if (!(await isAdminRequest())) return unauthorized();
+  const id = parseId((await params).id);
   if (!id) return NextResponse.json({ error: "Unknown dish" }, { status: 404 });
 
   try {

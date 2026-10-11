@@ -21,15 +21,14 @@ export function NairobiPrestige() {
       <div className="relative z-10 container mx-auto px-4 max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-gold-400 text-xs tracking-[0.35em] uppercase mb-4">Find Us in Town</p>
+            <p className="text-gold-400 text-xs tracking-[0.35em] uppercase mb-4">Kimathi Street</p>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory mb-6 leading-tight">
               Lyric House,<br />
-              <span className="text-gold-300 italic">Nairobi CBD</span>
+              <span className="text-gold-300 italic">Luxury in the CBD</span>
             </h2>
             <p className="text-champagne/80 text-lg leading-relaxed mb-8">
-              Right in the middle of town, a short walk from the offices, stages and shops
-              of central Nairobi. Easy to find, easy to agree on, and open from breakfast
-              to supper every day.
+              Next to KFC, opposite Total filling station — {restaurantInfo.name} dominates
+              Kimathi Street with space, speed, and an ambience that redefines CBD dining.
             </p>
             <AppButton
               href={restaurantInfo.social.google}

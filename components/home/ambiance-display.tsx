@@ -8,9 +8,9 @@ export function AmbianceDisplay() {
     <section className="py-24 md:py-32 bg-charcoal-900">
       <div className="container mx-auto px-4 max-w-7xl">
         <SectionHeading
-          eyebrow="Take a Look"
-          title="A Seat at Top Rise"
-          subtitle="A clean, comfortable room in the middle of town, and plates that arrive full."
+          eyebrow="Ambiance & Display"
+          title="An Evening at Top Rise"
+          subtitle="Soft lighting, refined interiors, and table settings worthy of Nairobi's most exclusive addresses."
         />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-16 auto-rows-[180px] md:auto-rows-[200px]">

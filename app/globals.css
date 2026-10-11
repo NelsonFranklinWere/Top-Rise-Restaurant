@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@theme {
+:root {
   /* Strong Brand Colors - Modern Implementation */
   --color-primary-50: #ffffff;
   --color-primary-100: #f8f8f8;

@@ -38,7 +38,7 @@ export function ensureSchema(): Promise<void> {
           name          TEXT NOT NULL,
           description   TEXT NOT NULL DEFAULT '',
           price         INTEGER NOT NULL CHECK (price >= 0),
-          category      TEXT NOT NULL CHECK (category IN ('breakfast', 'mains', 'grill', 'drinks')),
+          category      TEXT NOT NULL CHECK (category IN ('starters', 'mains', 'desserts', 'drinks')),
           image         TEXT,
           is_vegetarian BOOLEAN NOT NULL DEFAULT FALSE,
           spice_level   TEXT CHECK (spice_level IN ('mild', 'medium', 'hot')),
