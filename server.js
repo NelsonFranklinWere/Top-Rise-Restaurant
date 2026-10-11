@@ -18,7 +18,7 @@ app.disable("x-powered-by");
 app.get("/health", (_req, res) => {
   res.status(200).json({
     status: "ok",
-    service: "tavo-restaurant",
+    service: "top-rise-restaurant",
     runtime: "nodejs-express",
   });
 });
@@ -50,7 +50,7 @@ app.get("*", (req, res) => {
 
 app.listen(port, hostname, () => {
   const host = hostname === "0.0.0.0" ? "localhost" : hostname;
-  console.log(`> TAVO Node.js server running at http://${host}:${port}`);
+  console.log(`> Top Rise Restaurant Node.js server running at http://${host}:${port}`);
   console.log(`> Runtime: Express (no Next.js server)`);
   console.log(`> Mode: ${isDev ? "development" : "production"}`);
 });

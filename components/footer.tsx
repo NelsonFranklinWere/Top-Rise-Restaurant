@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, Instagram, Facebook, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, Clock } from "lucide-react";
 import { restaurantInfo } from "@/lib/data";
 
 export function Footer() {
@@ -9,11 +9,9 @@ export function Footer() {
       <div className="container mx-auto px-4 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           <div className="md:col-span-5">
-            <h3 className="font-display text-3xl text-gradient-gold tracking-[0.15em] mb-6">TAVO</h3>
+            <h3 className="font-display text-3xl text-gradient-gold tracking-[0.15em] mb-6">{restaurantInfo.shortName}</h3>
             <p className="text-champagne/70 mb-6 max-w-md leading-relaxed text-sm">
-              Nairobi&apos;s address for delicacies. Nestled in Rosslyn Square, TAVO delivers
-              the refined dining experience expected at the city&apos;s finest hotels —
-              where every dish tells a story and every visit feels like home.
+              {restaurantInfo.subtext}
             </p>
             <div className="flex gap-4">
               <a
@@ -26,13 +24,13 @@ export function Footer() {
                 <Instagram className="w-4 h-4 text-gold-400" />
               </a>
               <a
-                href={restaurantInfo.social.facebook}
+                href={restaurantInfo.social.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 border border-gold-500/25 hover:border-gold-500/50 hover:bg-gold-500/10 transition-all"
-                aria-label="Facebook"
+                className="p-2.5 border border-gold-500/25 hover:border-gold-500/50 hover:bg-gold-500/10 transition-all text-gold-400 text-xs font-semibold tracking-wider"
+                aria-label="TikTok"
               >
-                <Facebook className="w-4 h-4 text-gold-400" />
+                TT
               </a>
             </div>
           </div>
@@ -97,7 +95,7 @@ export function Footer() {
 
         <div className="border-t border-gold-500/15 mt-14 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-champagne/40 tracking-wide">
-            © {new Date().getFullYear()} TAVO Restaurant · Rosslyn Square, Nairobi
+            © {new Date().getFullYear()} {restaurantInfo.name} · Lyric House, Nairobi CBD
           </p>
           <div className="flex gap-8 text-xs">
             <Link href="/privacy" className="text-champagne/40 hover:text-gold-400 transition-colors">

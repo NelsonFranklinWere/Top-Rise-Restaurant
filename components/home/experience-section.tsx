@@ -14,9 +14,9 @@ export function ExperienceSection() {
     <section className="py-24 md:py-32 bg-charcoal-950 border-y border-gold-500/10">
       <div className="container mx-auto px-4 max-w-7xl">
         <SectionHeading
-          eyebrow="The TAVO Experience"
+          eyebrow="The Top Rise Experience"
           title="Beyond the Plate"
-          subtitle="The hallmarks of Nairobi's luxury hospitality — private suites, curated wines, and evenings designed around you."
+          subtitle="The hallmarks that set Top Rise apart on Kimathi Street — private rooms, balcony sunsets, and hospitality that offers more than excellence."
         />
 
         <div className="grid md:grid-cols-3 gap-8 mt-16">

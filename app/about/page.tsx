@@ -12,7 +12,9 @@ import {
   aboutMilestones,
   aboutValues,
   aboutTestimonials,
+  venueHighlights,
 } from "@/lib/pages-data";
+import { luxuryAmenities } from "@/lib/home-data";
 import { useState, useEffect } from "react";
 
 export default function AboutPage() {
@@ -31,9 +33,9 @@ export default function AboutPage() {
     <div className="min-h-screen bg-charcoal-950">
       <PageHero
         image={interiorImages.inside}
-        imageAlt="TAVO Restaurant interior, Rosslyn Square Nairobi"
+        imageAlt="Top Rise Restaurant interior, Lyric House Nairobi CBD"
         eyebrow="Our Story"
-        title="Crafted with Passion, Served with Style"
+        title="Luxury on Kimathi Street"
         subtitle={restaurantInfo.description}
       />
 
@@ -43,8 +45,8 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <SectionHeading
-                eyebrow="The TAVO Story"
-                title="Born in Nairobi, Built for Excellence"
+                eyebrow="The Top Rise Story"
+                title="Built to Dominate the CBD"
                 align="left"
               />
               <div className="space-y-6 text-champagne/75 leading-relaxed">
@@ -58,7 +60,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/5] overflow-hidden border border-gold-500/20">
               <OptimizedImage
                 src={interiorImages.ambiance1}
-                alt="TAVO evening ambiance"
+                alt="Top Rise Restaurant evening ambiance"
                 fill
                 className="object-cover"
                 variant="galleryThumb"
@@ -90,7 +92,7 @@ export default function AboutPage() {
             <div className="relative aspect-video overflow-hidden border border-gold-500/20 order-2 lg:order-1">
               <OptimizedImage
                 src={interiorImages.carousel}
-                alt="TAVO kitchen and culinary team"
+                alt="Top Rise Restaurant kitchen and culinary team"
                 fill
                 className="object-cover"
                 variant="galleryThumb"
@@ -102,19 +104,47 @@ export default function AboutPage() {
                 <p className="text-gold-400 text-xs tracking-[0.3em] uppercase">The Kitchen</p>
               </div>
               <h2 className="font-display text-3xl md:text-4xl text-ivory mb-6">
-                Where Delicacies Are Composed
+                Where Excellence Is the Minimum
               </h2>
               <p className="text-champagne/75 leading-relaxed mb-6">
-                Behind every plate is a kitchen united by a single belief: that Nairobi deserves
-                dining on par with the world&apos;s finest hotels. Our chefs blend international
-                technique with bold, honest flavours — each course a conversation between craft
-                and creativity.
+                Behind every sizzling grill and every mandi rice dish is a kitchen that believes
+                Nairobi CBD deserves more than ordinary. Halal food rated 4.3 on Bolt Food —
+                mixed grills, butter chicken, garden salads, and sharing platters that define
+                Kimathi Street luxury.
               </p>
               <p className="text-champagne/75 leading-relaxed">
-                From the first amuse-bouche to the final petit four, every element is considered.
-                This is not cooking for the sake of feeding — it is cuisine designed to be remembered.
+                Swift service from a team that moves fast without cutting corners. Vegan options,
+                happy-hour specials, and a menu wide enough to host any table — from balcony
+                dinners to conference lunches.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Venue Highlights */}
+      <section className="py-24 md:py-32 bg-charcoal-900 border-y border-gold-500/10">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <SectionHeading
+            eyebrow="The Top Rise Advantage"
+            title="What Competitors Cannot Match"
+            subtitle="Space, speed, connectivity, and ambience — the layers of luxury that make Top Rise the standout on Kimathi Street."
+          />
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-14">
+            {venueHighlights.map((item) => (
+              <div key={item.label} className="text-center p-6 border border-gold-500/15 hover:border-gold-500/35 transition-colors">
+                <p className="text-gold-400 text-[10px] tracking-[0.25em] uppercase mb-2">{item.label}</p>
+                <p className="font-display text-lg text-ivory">{item.value}</p>
+              </div>
+            ))}
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+            {luxuryAmenities.slice(0, 4).map((amenity) => (
+              <div key={amenity.title} className="p-6 border border-gold-500/10 bg-charcoal-950/50">
+                <h3 className="font-display text-lg text-ivory mb-2">{amenity.title}</h3>
+                <p className="text-champagne/60 text-sm leading-relaxed">{amenity.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -125,7 +155,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="What We Stand For"
             title="Our Values"
-            subtitle="The principles that guide every plate, every pour, and every evening at TAVO."
+            subtitle="The principles that guide every plate, every pour, and every evening at Top Rise Restaurant."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
             {aboutValues.map((v, i) => {
@@ -181,7 +211,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 section-red-accent" />
         <div className="relative container mx-auto px-4 max-w-3xl text-center">
           <h2 className="font-display text-3xl md:text-4xl text-ivory mb-4">
-            Visit Us at <span className="text-gradient-red">Rosslyn Square</span>
+            Visit Us at <span className="text-gradient-red">Lyric House</span>
           </h2>
           <p className="text-champagne/70 mb-8">
             {restaurantInfo.address.street}, {restaurantInfo.address.city}
@@ -189,6 +219,9 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <AppButton href={restaurantInfo.social.google} external variant="primary">
               Get Directions
+            </AppButton>
+            <AppButton href={restaurantInfo.social.bolt} external variant="outline">
+              Order on Bolt Food
             </AppButton>
             <AppButton href="/reservations" variant="outline">
               Reserve a Table

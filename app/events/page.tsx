@@ -30,20 +30,20 @@ export default function EventsPage() {
     <div className="min-h-screen bg-charcoal-950">
       <PageHero
         image={interiorImages.ambiance1}
-        imageAlt="TAVO private events and catering"
+        imageAlt="Top Rise Restaurant private events and catering"
         eyebrow="Events & Catering"
         title="Occasions Worth Remembering"
-        subtitle="From intimate anniversaries to board dinners that close deals — TAVO brings Nairobi hotel-standard event service to Rosslyn Square."
+        subtitle="From birthday celebrations to board meetings — Top Rise brings spacious private rooms and Halal catering to Nairobi CBD."
       />
 
       {/* Intro */}
       <section className="py-20 md:py-28 border-b border-gold-500/10">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <p className="text-champagne/80 text-lg md:text-xl leading-relaxed">
-            Nairobi&apos;s social calendar demands venues that understand discretion, excellence,
-            and the unspoken art of hospitality. At TAVO, your event is not a booking — it is a
-            collaboration. Our events team works alongside you from first conversation to final toast,
-            ensuring every detail reflects the standards your guests expect.
+            Nairobi&apos;s CBD needs venues with room to breathe — private spaces for meetings,
+            conferences, and celebrations. At Top Rise Restaurant, your event is not a booking — it is a
+            collaboration. Our team works alongside you from first conversation to final toast,
+            ensuring every detail reflects the warmth and quality your guests expect.
           </p>
         </div>
       </section>
@@ -54,7 +54,7 @@ export default function EventsPage() {
           <SectionHeading
             eyebrow="What We Offer"
             title="Tailored for Every Occasion"
-            subtitle="Six distinct event experiences — each delivered with the precision of a five-star hotel."
+            subtitle="Six distinct event experiences — private rooms, Halal menus, and happy-hour options in Nairobi CBD."
           />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
@@ -93,26 +93,26 @@ export default function EventsPage() {
             <div className="relative aspect-[4/3] overflow-hidden border border-gold-500/20">
               <OptimizedImage
                 src={interiorImages.ambiance2}
-                alt="TAVO private dining setup"
+                alt="Top Rise Restaurant private dining setup"
                 fill
                 className="object-cover"
                 variant="galleryThumb"
               />
             </div>
             <div>
-              <p className="text-gold-400 text-xs tracking-[0.3em] uppercase mb-4">Why TAVO Events</p>
+              <p className="text-gold-400 text-xs tracking-[0.3em] uppercase mb-4">Why Top Rise Events</p>
               <h2 className="font-display text-3xl md:text-4xl text-ivory mb-6">
-                The Venue Nairobi&apos;s Finest Choose
+                The Venue Nairobi CBD Chooses
               </h2>
               <div className="space-y-4 text-champagne/75 text-sm leading-relaxed">
                 <p>
-                  Diplomatic dinners. C-suite board meetings. Engagement celebrations that
-                  make the guest list jealous. TAVO has hosted them all — with the same
-                  quiet confidence that defines Nairobi&apos;s best hotels.
+                  Team meetings. Birthday celebrations. Conferences that need reliable catering.
+                  Top Rise has hosted them all — with the same welcoming spirit that defines
+                  Kimathi Street&apos;s largest restaurant.
                 </p>
                 <p>
-                  Private suites away from the main dining room. Sommelier-led wine service.
-                  Bespoke menus designed by our executive chef. And a team that anticipates
+                  Private rooms away from the main dining area. Halal menus with vegan options.
+                  Happy-hour food for relaxed gatherings. And a team that anticipates
                   needs before they are spoken.
                 </p>
               </div>
@@ -157,7 +157,7 @@ export default function EventsPage() {
             <AppButton href={`tel:${restaurantInfo.phone}`} external variant="primary" icon={<Phone className="w-4 h-4" />}>
               Call Us
             </AppButton>
-            <AppButton href={`mailto:${restaurantInfo.email}?subject=TAVO Event Enquiry`} external variant="outline" icon={<Mail className="w-4 h-4" />}>
+            <AppButton href={`mailto:${restaurantInfo.email}?subject=Top Rise Restaurant Event Enquiry`} external variant="outline" icon={<Mail className="w-4 h-4" />}>
               Email Events
             </AppButton>
             <AppButton href="/contact" variant="outline">

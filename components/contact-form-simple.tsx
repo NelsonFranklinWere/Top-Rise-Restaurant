@@ -52,7 +52,7 @@ Message:
 ${formData.message}
 
 ---
-Sent from TAVO Restaurant Contact Form
+Sent from Top Rise Restaurant Contact Form
       `);
       
       const mailtoLink = `mailto:strivego4@gmail.com?subject=${subject}&body=${body}`;

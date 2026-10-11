@@ -7,14 +7,14 @@ export function PhilosophySection() {
       <div className="container mx-auto px-4 max-w-4xl relative z-10">
         <SectionHeading
           eyebrow="Our Philosophy"
-          title="Where Delicacy Meets Nairobi"
-          subtitle="In a city that demands excellence, TAVO answers with plates that speak softly and flavours that linger. Every ingredient is chosen with intention. Every service gesture, deliberate. This is dining for those who know the difference."
+          title="Kimathi Street, Elevated"
+          subtitle="In the heart of Nairobi CBD, Top Rise offers what competitors cannot — the largest floor space, balcony seats with evening sun, high-speed Wi‑Fi, display screens, and a cool quiet environment where luxury feels effortless."
         />
         <div className="grid md:grid-cols-3 gap-8 mt-16 text-center">
           {[
-            { label: "Craft", value: "Chef-Led" },
-            { label: "Setting", value: "Rosslyn Square" },
-            { label: "Standard", value: "Five-Star" },
+            { label: "Setting", value: "Lyric House" },
+            { label: "Standard", value: "Beyond Excellence" },
+            { label: "Rating", value: "4.3 on Bolt" },
           ].map((stat) => (
             <div key={stat.label} className="border border-gold-500/20 py-8 px-4">
               <p className="text-gold-400 text-xs tracking-[0.3em] uppercase mb-2">{stat.label}</p>

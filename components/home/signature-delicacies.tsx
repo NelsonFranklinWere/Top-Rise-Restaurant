@@ -10,8 +10,8 @@ export function SignatureDelicacies() {
       <div className="container mx-auto px-4 max-w-7xl">
         <SectionHeading
           eyebrow="Signature Delicacies"
-          title="Plates That Speak for Themselves"
-          subtitle="A curated selection from our kitchen — each dish crafted to the standards Nairobi's finest expect."
+          title="Signature Plates"
+          subtitle="Rated 4.3 on Bolt Food — a curated selection from our kitchen, each dish crafted to dominate Kimathi Street."
         />
 
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mt-16">

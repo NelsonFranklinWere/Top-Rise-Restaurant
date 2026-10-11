@@ -8,16 +8,16 @@ import { AppButton } from "@/components/ui/app-button";
 import { ReservationFormSimple } from "@/components/reservation-form-simple";
 
 export default function ReservationsPage() {
-  const whatsappUrl = `https://wa.me/${restaurantInfo.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent("Hello TAVO! I would like to reserve a table.")}`;
+  const whatsappUrl = `https://wa.me/${restaurantInfo.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent("Hello Top Rise Restaurant! I would like to reserve a table.")}`;
 
   return (
     <div className="min-h-screen bg-charcoal-950">
       <PageHero
         image={heroImages.reservations}
-        imageAlt="TAVO Restaurant Reservations"
+        imageAlt="Top Rise Restaurant Reservations"
         eyebrow="Book Your Evening"
         title="Reserve Your Table"
-        subtitle="Experience Nairobi's most refined dining at TAVO — Rosslyn Square."
+        subtitle="Halal dining at Lyric House, Kimathi Street — private rooms available for meetings and celebrations."
       />
 
       {/* Quick booking */}

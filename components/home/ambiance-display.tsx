@@ -9,7 +9,7 @@ export function AmbianceDisplay() {
       <div className="container mx-auto px-4 max-w-7xl">
         <SectionHeading
           eyebrow="Ambiance & Display"
-          title="An Evening at TAVO"
+          title="An Evening at Top Rise"
           subtitle="Soft lighting, refined interiors, and table settings worthy of Nairobi's most exclusive addresses."
         />
 

@@ -51,10 +51,10 @@ export default function MenuPage() {
     <div className="min-h-screen bg-charcoal-950">
       <PageHero
         image={heroImages.menu}
-        imageAlt="TAVO Restaurant Menu"
+        imageAlt="Top Rise Restaurant Menu"
         eyebrow="Culinary Collection"
         title="Our Menu"
-        subtitle="Discover our carefully crafted selection of fine fusion delicacies — composed for Nairobi's most discerning tables."
+        subtitle="Discover our Halal menu — sizzling grills, Arabian mandi, breakfast spreads, and refreshing drinks from Top Rise on Kimathi Street."
       />
 
       {/* Category Tabs */}

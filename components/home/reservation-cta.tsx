@@ -9,11 +9,11 @@ export function ReservationCta() {
       <div className="relative z-10 container mx-auto px-4 max-w-3xl text-center">
         <p className="text-accent-400 text-xs tracking-[0.35em] uppercase mb-6">Your Table Awaits</p>
         <h2 className="font-display text-4xl md:text-5xl text-ivory mb-6">
-          Reserve an Evening of <span className="text-gradient-red">Delicacies</span>
+          Reserve Luxury on <span className="text-gradient-red">Kimathi Street</span>
         </h2>
         <p className="text-champagne/70 text-lg mb-10 leading-relaxed">
-          Join Nairobi&apos;s finest for an evening where every detail has been considered.
-          Limited seating — we recommend booking in advance.
+          Balcony seats for evening sun. Private rooms with display screens. Nairobi CBD&apos;s
+          largest restaurant — book ahead for the experience competitors cannot match.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <AppButton href="/reservations" variant="primary">

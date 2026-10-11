@@ -6,7 +6,8 @@ import { OptimizedImage } from "@/components/optimized-image";
 import { PageHero } from "@/components/page-hero";
 import { AppButton } from "@/components/ui/app-button";
 import { interiorImages, preloadImages } from "@/lib/images";
-import { galleryCollection, galleryCategories, type GalleryCategory } from "@/lib/pages-data";
+import { restaurantInfo } from "@/lib/data";
+import { galleryCollection, galleryCategories, galleryIntro, type GalleryCategory } from "@/lib/pages-data";
 
 function getSpanClasses(span: string) {
   if (span.includes("col-span-2") && span.includes("row-span-2")) {
@@ -69,11 +70,28 @@ export default function GalleryPage() {
     <div className="min-h-screen bg-charcoal-950">
       <PageHero
         image={interiorImages.ambiance2}
-        imageAlt="TAVO gallery — cuisine and ambiance"
+        imageAlt="Top Rise Restaurant gallery — luxury ambiance on Kimathi Street"
         eyebrow="Visual Journey"
         title="Curated Gallery"
-        subtitle="A collection of moments — plated delicacies, refined interiors, and the evenings that define TAVO at Rosslyn Square."
+        subtitle="Space, light, balcony sunsets, and plates that define luxury on Kimathi Street — Nairobi CBD's premier restaurant experience."
       />
+
+      <section className="py-16 md:py-20 border-b border-gold-500/10">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h2 className="font-display text-2xl md:text-3xl text-ivory mb-6">{galleryIntro.title}</h2>
+          <p className="text-champagne/70 leading-relaxed mb-10">{galleryIntro.body}</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {galleryIntro.highlights.map((item) => (
+              <span
+                key={item}
+                className="px-4 py-2 border border-gold-500/25 text-gold-400 text-xs tracking-[0.15em] uppercase"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="sticky top-20 z-40 bg-charcoal-950/95 backdrop-blur-xl border-b border-accent-500/15">
         <div className="container mx-auto px-4 py-4">
@@ -128,9 +146,12 @@ export default function GalleryPage() {
             ))}
           </div>
 
-          <div className="mt-16 text-center">
+          <div className="mt-16 text-center flex flex-col sm:flex-row items-center justify-center gap-4">
             <AppButton href="/reservations" variant="primary">
               Reserve Your Table
+            </AppButton>
+            <AppButton href={restaurantInfo.social.bolt} external variant="outline">
+              Order on Bolt Food
             </AppButton>
           </div>
         </div>

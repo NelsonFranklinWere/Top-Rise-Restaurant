@@ -10,7 +10,7 @@ export function NairobiPrestige() {
       <div className="absolute inset-0 z-0">
         <OptimizedImage
           src={interiorImages.interior}
-          alt="TAVO at Rosslyn Square, Nairobi"
+          alt="Top Rise Restaurant at Lyric House, Nairobi CBD"
           fill
           className="object-cover"
           variant="hero"
@@ -21,15 +21,14 @@ export function NairobiPrestige() {
       <div className="relative z-10 container mx-auto px-4 max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-gold-400 text-xs tracking-[0.35em] uppercase mb-4">Nairobi&apos;s Address</p>
+            <p className="text-gold-400 text-xs tracking-[0.35em] uppercase mb-4">Kimathi Street</p>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory mb-6 leading-tight">
-              Rosslyn Square,<br />
-              <span className="text-gold-300 italic">Redhill Road</span>
+              Lyric House,<br />
+              <span className="text-gold-300 italic">Luxury in the CBD</span>
             </h2>
             <p className="text-champagne/80 text-lg leading-relaxed mb-8">
-              Positioned within Nairobi&apos;s premier luxury mall — alongside the city&apos;s
-              most distinguished residences and hotels. TAVO is where discerning Nairobi
-              gathers for an evening worth remembering.
+              Next to KFC, opposite Total filling station — {restaurantInfo.name} dominates
+              Kimathi Street with space, speed, and an ambience that redefines CBD dining.
             </p>
             <AppButton
               href={restaurantInfo.social.google}

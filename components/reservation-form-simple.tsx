@@ -61,7 +61,7 @@ Special Requests:
 ${formData.message}
 
 ---
-Sent from TAVO Restaurant Reservation Form
+Sent from Top Rise Restaurant Reservation Form
       `);
 
       window.location.href = `mailto:strivego4@gmail.com?subject=${subject}&body=${body}`;

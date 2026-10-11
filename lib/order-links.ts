@@ -8,7 +8,7 @@ export function formatMenuPrice(price: number) {
 export function buildWhatsAppOrderUrl(item: MenuItem): string {
   const phone = restaurantInfo.whatsapp.replace(/[^0-9]/g, "");
   const message = [
-    `Hello TAVO! I would like to order:`,
+    `Hello Top Rise Restaurant! I would like to order:`,
     ``,
     `*${item.name}*`,
     `Price: ${formatMenuPrice(item.price)}`,
@@ -24,5 +24,5 @@ export function buildWhatsAppOrderUrl(item: MenuItem): string {
 export function buildBoltOrderUrl(item: MenuItem): string {
   const base = restaurantInfo.social.bolt;
   const note = encodeURIComponent(item.name);
-  return `${base}?utm_source=tavo_website&item=${note}`;
+  return `${base}?utm_source=toprise_website&item=${note}`;
 }

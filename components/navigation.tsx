@@ -6,7 +6,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { preloadImages } from "@/lib/images";
-import { menuItems } from "@/lib/data";
+import { menuItems, restaurantInfo } from "@/lib/data";
 
 const menuImageUrls = Array.from(
   new Set(menuItems.map((item) => item.image).filter((img): img is string => Boolean(img)))
@@ -78,7 +78,7 @@ export function Navigation() {
               href="/"
               className="font-display text-2xl md:text-3xl font-semibold text-gradient-gold tracking-[0.2em] hover:opacity-90 transition-opacity"
             >
-              TAVO
+              {restaurantInfo.shortName}
             </Link>
 
             <div className="hidden md:flex items-center gap-10">

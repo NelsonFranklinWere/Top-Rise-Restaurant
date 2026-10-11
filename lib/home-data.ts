@@ -1,107 +1,174 @@
 import { foodImages, drinkImages, interiorImages } from "./images";
 
 export const luxuryStandards = [
-  "Sommelier-Curated Wines",
-  "Private Dining Suites",
-  "Chef's Table Experience",
-  "Valet at Rosslyn Square",
-  "Artisan Cocktails",
-  "White-Glove Service",
-  "Seasonal Tasting Menus",
-  "Nairobi's Finest Address",
+  "Nairobi CBD's Largest Restaurant",
+  "Balcony Seats & Evening Sun",
+  "High-Speed Wi‑Fi",
+  "Quiet, Cool Ambience",
+  "Artfully Lit Interiors",
+  "Display Screens for Events",
+  "Swift, Attentive Service",
+  "Halal Excellence",
+  "Private Dining Rooms",
+  "Order on Bolt Food",
+];
+
+export type AmenityIcon =
+  | "space"
+  | "wifi"
+  | "service"
+  | "quiet"
+  | "lighting"
+  | "balcony"
+  | "screens"
+  | "cuisine";
+
+export const luxuryAmenities: {
+  icon: AmenityIcon;
+  title: string;
+  description: string;
+}[] = [
+  {
+    icon: "space",
+    title: "Generous Space",
+    description:
+      "Nairobi CBD's largest restaurant — room to breathe, dine, and host without feeling crowded. The scale competitors simply cannot match.",
+  },
+  {
+    icon: "wifi",
+    title: "High-Speed Wi‑Fi",
+    description:
+      "Reliable, fast internet throughout — ideal for working lunches, video calls, and conferences that demand connectivity.",
+  },
+  {
+    icon: "service",
+    title: "Swift Service",
+    description:
+      "Attentive staff and efficient kitchen flow — your time is valued. Faster service without sacrificing the quality you expect.",
+  },
+  {
+    icon: "quiet",
+    title: "Cool & Quiet",
+    description:
+      "A refined environment away from CBD chaos — cooler temperatures, softer acoustics, and an atmosphere designed for conversation.",
+  },
+  {
+    icon: "lighting",
+    title: "Artful Lighting",
+    description:
+      "Thoughtfully lit interiors that flatter every plate and every guest — from bright daytime clarity to golden evening warmth.",
+  },
+  {
+    icon: "balcony",
+    title: "Balcony Seating",
+    description:
+      "Elevated balcony tables with evening sun — Kimathi Street views, fresh air, and a setting that feels distinctly premium.",
+  },
+  {
+    icon: "screens",
+    title: "Display Screens",
+    description:
+      "Built-in screens for presentations, match days, and milestone celebrations — your event, visually elevated.",
+  },
+  {
+    icon: "cuisine",
+    title: "Exceptional Cuisine",
+    description:
+      "From sizzling grills and Arabian mandi to garden salads and butter chicken — Halal food rated 4.3 on Bolt Food.",
+  },
 ];
 
 export const featuredDelicacies = [
   {
-    id: "wagyu",
-    name: "Wagyu Beef Tenderloin",
-    tagline: "Signature Main",
+    id: "mixed-grill",
+    name: "Mixed Grill Sizzling",
+    tagline: "Sizzling Grills",
     description:
-      "Hand-selected wagyu, flame-seared and finished with truffle jus — a centrepiece worthy of Nairobi's most discerning tables.",
-    price: "KES 3,500",
-    image: foodImages.driedmeatcuisine,
-    note: "Chef's Recommendation",
+      "Fish, chicken, beef & veg — served sizzling hot. A signature showpiece that defines the Top Rise experience.",
+    price: "KES 920",
+    image: foodImages.driedMeatCuisine,
+    note: "House Favourite",
   },
   {
-    id: "lobster",
-    name: "Lobster Bisque",
-    tagline: "Opening Delicacy",
+    id: "mandi",
+    name: "Arabian Mandi",
+    tagline: "African & Arabian",
     description:
-      "Silky bisque enriched with cognac and fresh herbs — the kind of opening act expected at a five-star Nairobi evening.",
-    price: "KES 1,500",
-    image: foodImages.seafood,
+      "Traditional Arabian rice with spiced meat — fragrant, generous, and crafted for guests who expect depth in every bite.",
+    price: "KES 1,150",
+    image: foodImages.riceBeefMasala,
+    note: "Chef's Pick",
+  },
+  {
+    id: "butter-chicken",
+    name: "Butter Chicken",
+    tagline: "Chicken Selection",
+    description:
+      "BBQ boneless chicken in a rich, special sauce — bold flavour, silky finish, and the kind of plate that keeps guests returning.",
+    price: "KES 920",
+    image: foodImages.butterChicken,
     note: "Guest Favourite",
   },
   {
-    id: "truffle",
-    name: "Truffle Risotto",
-    tagline: "Vegetarian Prestige",
+    id: "garden-salad",
+    name: "Toprise Garden Salad",
+    tagline: "Fresh & Light",
     description:
-      "Creamy arborio kissed with black truffle and wild mushrooms — indulgence without compromise.",
-    price: "KES 2,200",
-    image: foodImages.superservedlunch,
-    note: "Seasonal Highlight",
-  },
-  {
-    id: "cocktails",
-    name: "Signature Cocktails",
-    tagline: "Bar & Lounge",
-    description:
-      "Crafted by our mixologist — bold, balanced, and designed to complement every course of your evening.",
-    price: "From KES 1,200",
-    image: drinkImages.twoglassescombineddrink,
-    note: "House Special",
+      "Iceberg lettuce, avocado, olives, and garden freshness — proof that luxury on Kimathi Street extends to every course.",
+    price: "KES 460",
+    image: foodImages.superServedLunch,
+    note: "Light Luxury",
   },
 ];
 
 export const experiences = [
   {
     title: "Private Dining",
-    subtitle: "Intimate. Exclusive. Unforgettable.",
+    subtitle: "Space. Discretion. Excellence.",
     description:
-      "Secluded suites for board dinners, anniversaries, and celebrations — with bespoke menus and dedicated service, as expected at Nairobi's finest hotels.",
+      "Private rooms for board meetings, conferences, and celebrations — with Halal menus, display screens, and service that anticipates every need.",
     icon: "crown" as const,
   },
   {
-    title: "Wine & Spirits",
-    subtitle: "A cellar worth the journey",
+    title: "Balcony & Evening Sun",
+    subtitle: "Kimathi Street elevated",
     description:
-      "International vintages and rare pours, curated to pair with our fusion menu — the standard Nairobi's luxury diners demand.",
+      "Balcony seating with golden evening light — a rare luxury in the CBD. Dine above the street, not in the noise of it.",
     icon: "wine" as const,
   },
   {
-    title: "Chef's Table",
-    subtitle: "Front-row to the kitchen",
+    title: "Meetings That Impress",
+    subtitle: "Wi‑Fi · Screens · Speed",
     description:
-      "Watch artistry unfold. A multi-course journey narrated by our executive chef — limited seats, extraordinary evenings.",
+      "High-speed internet, presentation-ready screens, and swift service — the venue Nairobi professionals choose when image matters.",
     icon: "chef" as const,
   },
 ];
 
 export const ambianceDisplays = [
   {
-    src: interiorImages.ambiance1,
-    alt: "TAVO evening ambiance at Rosslyn Square",
+    src: interiorImages.eveningOutside,
+    alt: "Top Rise Restaurant evening outside view — luxury dining at Lyric House",
     span: "col-span-2 row-span-2",
   },
   {
-    src: foodImages.elegantlyfriedfood1,
-    alt: "Artfully plated delicacy",
+    src: foodImages.sizzlingGrill,
+    alt: "Mixed grill sizzling platter at Top Rise Restaurant",
     span: "col-span-1 row-span-1",
   },
   {
-    src: interiorImages.inside,
-    alt: "TAVO interior dining room",
+    src: interiorImages.balconyView,
+    alt: "Balcony seating with evening sun at Top Rise Restaurant",
     span: "col-span-1 row-span-1",
   },
   {
-    src: drinkImages.chillingdrink,
-    alt: "Premium chilled beverages",
+    src: drinkImages.freshDrink,
+    alt: "Freshly squeezed juice at Top Rise Restaurant",
     span: "col-span-1 row-span-1",
   },
   {
-    src: interiorImages.ambiance2,
-    alt: "Luxury table setting",
+    src: interiorImages.meetingSetup,
+    alt: "Meeting setup with display screens at Top Rise Restaurant",
     span: "col-span-1 row-span-1",
   },
 ];
@@ -109,20 +176,20 @@ export const ambianceDisplays = [
 export const guestTestimonials = [
   {
     quote:
-      "TAVO sets the bar for fine dining in Nairobi. The attention to detail rivals any international five-star hotel I've visited.",
-    name: "Executive Guest",
-    title: "Regular Patron, Rosslyn",
+      "Top Rise is in a league of its own on Kimathi Street. Spacious, quiet, fast service, and the balcony seats at sunset are unforgettable.",
+    name: "Corporate Guest",
+    title: "Regular Patron, Nairobi CBD",
   },
   {
     quote:
-      "From the first amuse-bouche to the final pour — every moment felt curated. This is what luxury dining in Kenya should be.",
-    name: "Diplomatic Circle",
-    title: "Private Dining Guest",
+      "We held a conference here — Wi‑Fi was flawless, the screens worked perfectly, and the Halal catering impressed every delegate.",
+    name: "Events Coordinator",
+    title: "Conference Host",
   },
   {
     quote:
-      "The ambience, the service, the flavours — TAVO understands what Nairobi's elite expect. Simply exceptional.",
-    name: "SK Macharia",
-    title: "Valued Guest",
+      "4.3 stars on Bolt for a reason. The mixed grill sizzling is exceptional, and dining in feels like luxury without the pretence.",
+    name: "Valued Guest",
+    title: "Google & Bolt Review",
   },
 ];
